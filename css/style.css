@@ -3984,25 +3984,277 @@ body {
     will-change: transform;
 }
 
-/* Keep cards and story panels visible */
-.gateway-horizontal-track .gateway-card {
-    flex-shrink: 0;
-    overflow: visible !important;
+
+/* =========================================================
+   GATEWAY IMAGE CARDS — IMAGE ONLY, OPEN DETAILS POPUP
+   ========================================================= */
+.gateway-cards {
+    align-items: flex-start !important;
 }
 
-/* Hide the old horizontal scrollbar */
-.gateway-horizontal-track .gateway-district-scroll::-webkit-scrollbar {
-    display: none;
+.gateway-card {
+    position: relative !important;
+    flex: 0 0 300px !important;
+    width: 300px !important;
+    min-width: 300px !important;
+    max-width: 300px !important;
+    height: auto !important;
+    min-height: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    border: 1px solid #c8a66f !important;
+    border-radius: 18px !important;
+    background: #25140f !important;
+    box-shadow: 0 8px 22px rgba(45, 24, 12, .18) !important;
 }
 
-.gateway-horizontal-track .gateway-district-scroll {
-    scrollbar-width: none;
+.gateway-card-image {
+    display: block !important;
+    position: relative !important;
+    width: 100% !important;
+    height: 230px !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    border: 0 !important;
+    border-radius: 17px !important;
+    background: #25140f !important;
+    cursor: pointer !important;
+    text-align: inherit !important;
+}
+
+.gateway-card-img {
+    display: block !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    transition: transform .35s ease, filter .35s ease !important;
+}
+
+.gateway-card-image:hover .gateway-card-img {
+    transform: scale(1.035) !important;
+    filter: brightness(1.06) !important;
+}
+
+.gateway-image-hint {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 24px 12px 11px;
+    color: #fff8e9;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    text-align: center;
+    background: linear-gradient(transparent, rgba(25, 13, 8, .82));
+    pointer-events: none;
+}
+
+/* Cards no longer expand; details are shown in the modal below. */
+.gateway-card-data {
+    display: none !important;
+}
+
+/* Destination details popup */
+.gateway-event-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+}
+
+.gateway-event-backdrop {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(18, 10, 7, .72);
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+}
+
+.gateway-event-dialog {
+    position: relative;
+    width: min(680px, 100%);
+    max-height: min(90vh, 850px);
+    overflow: auto;
+    border: 1px solid #d6b16f;
+    border-radius: 24px;
+    background: #fffdf8;
+    box-shadow: 0 24px 80px rgba(0, 0, 0, .38);
+    animation: gatewayEventPop .22s ease-out;
+}
+
+@keyframes gatewayEventPop {
+    from { opacity: 0; transform: translateY(12px) scale(.98); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.gateway-event-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 24px 18px;
+    border-bottom: 1px solid #ebdcc7;
+    background: #fbf5eb;
+}
+
+.gateway-event-kicker {
+    display: block;
+    margin-bottom: 6px;
+    color: #963d25;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .16em;
+}
+
+.gateway-event-title {
+    margin: 0;
+    color: #47271b;
+    font-family: Georgia, serif;
+    font-size: clamp(19px, 3vw, 26px);
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.gateway-event-close {
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    border: 1px solid #d8c6a8;
+    border-radius: 50%;
+    color: #5c3e2e;
+    background: #fffaf1;
+    font-size: 26px;
+    line-height: 1;
+    cursor: pointer;
+}
+
+.gateway-event-close:hover {
+    color: #fff;
+    background: #963d25;
+    border-color: #963d25;
+}
+
+.gateway-event-body {
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(220px, .9fr);
+    gap: 22px;
+    padding: 24px;
+}
+
+.gateway-event-photo-wrap {
+    min-height: 230px;
+    overflow: hidden;
+    border: 1px solid #e3d2b5;
+    border-radius: 16px;
+    background: #26160f;
+}
+
+.gateway-event-photo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    min-height: 230px;
+    max-height: 360px;
+    object-fit: contain;
+}
+
+.gateway-event-info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+}
+
+.gateway-event-detail {
+    padding: 14px 15px;
+    border: 1px solid #eadcc5;
+    border-radius: 13px;
+    background: #fcf7ee;
+}
+
+.gateway-event-detail-label {
+    display: block;
+    margin-bottom: 6px;
+    color: #963d25;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .12em;
+}
+
+.gateway-event-detail-value {
+    display: block;
+    color: #47271b;
+    font-size: 14px;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.gateway-event-story {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    width: 100%;
+    margin-top: 4px;
+    padding: 14px 17px;
+    border: 1px solid #963d25;
+    border-radius: 12px;
+    color: #fffaf0;
+    background: #963d25;
+    font-size: 13px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: background .2s ease, transform .2s ease;
+}
+
+.gateway-event-story:hover {
+    transform: translateY(-1px);
+    background: #71301e;
 }
 
 @media (max-width: 600px) {
-    .gateway-horizontal-track .gateway-district-scroll {
-        top: 12vh;
-        height: 390px;
-        min-height: 390px;
+    .gateway-card {
+        flex-basis: 82vw !important;
+        width: 82vw !important;
+        min-width: 82vw !important;
+        max-width: 82vw !important;
+    }
+
+    .gateway-card-image {
+        height: 215px !important;
+    }
+
+    .gateway-event-backdrop {
+        align-items: center;
+        padding: 12px;
+    }
+
+    .gateway-event-dialog {
+        max-height: 92vh;
+        border-radius: 19px;
+    }
+
+    .gateway-event-header {
+        padding: 17px 18px 14px;
+    }
+
+    .gateway-event-body {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 17px;
+    }
+
+    .gateway-event-photo-wrap,
+    .gateway-event-photo {
+        min-height: 190px;
+        max-height: 250px;
     }
 }

@@ -64,8 +64,8 @@ body {
 #mapbase svg {
     display: block;
 
-    width: 1077px;
-    min-width: 800px;
+    width: 1183px;
+    min-width: 1100px;
     max-width: none;
 
     height: auto;
@@ -97,7 +97,7 @@ body {
     }
 
     #mapbase svg {
-        width: 1100px;
+        width: 1183px;
         min-width: 1100px;
     }
 }
@@ -792,4 +792,64 @@ body {
     #mapbase svg foreignObject.state-elevated-icon {
         transition: none;
     }
+}
+/* FIX: FULL IMAGE + ALWAYS VISIBLE STORY BUTTON */
+
+.gateway-district-scroll .gateway-card {
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+    display: flex !important;
+    flex-direction: column !important;
+    background: #fffdf8 !important;
+    border-radius: 1.25rem !important;
+}
+
+/* Full image */
+.gateway-district-scroll .gateway-card-image {
+    width: 100% !important;
+    height: 220px !important;
+    flex: 0 0 220px !important;
+    overflow: hidden !important;
+    background: #25140f !important;
+}
+
+.gateway-district-scroll .gateway-card-img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+}
+
+/* Always show destination, time and story */
+.gateway-district-scroll .gateway-card-data {
+    position: static !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 14px !important;
+
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    pointer-events: auto !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+    background: #fffdf8 !important;
+    box-shadow: none !important;
+}
+
+/* Keep story button visible and clickable */
+.gateway-district-scroll .gateway-card-data button {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* Remove old hover movement */
+.gateway-district-scroll .gateway-card:hover .gateway-card-data {
+    transform: none !important;
 }

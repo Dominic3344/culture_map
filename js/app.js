@@ -265,41 +265,62 @@
 
     $('gatewayCounter').textContent = pad2(events.length) + ' UPCOMING ACTIVITIES';
 
-    $('gatewayCards').innerHTML = events.map(function (evt, index) {
+    $('gatewayCards').innerHTML = events.map(function (evt) {
       return '' +
         '<article class="gateway-card">' +
-          '<div class="gateway-card-image">' +
+          '<button type="button" data-action="open-gateway-event" data-evt="' + esc(evt.id) + '" class="gateway-card-image" aria-label="View details for ' + esc(evt.title) + '">' +
             '<img src="' + esc(evt.image) + '" alt="' + esc(evt.title) + '" class="gateway-card-img" loading="lazy" onerror="' + ERR_IMG + '" />' +
-            '<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none"></div>' +
-            '<div class="absolute top-3 left-3 flex items-center gap-1.5 z-2">' +
-              '<span class="gateway-card-image-caption">' + esc(String(evt.artForm).toUpperCase()) + '</span>' +
-              (evt.statusBadge ? '<span class="px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wider uppercase bg-[#1e7e34] text-white shadow-sm">' + esc(evt.statusBadge) + '</span>' : '') +
-            '</div>' +
-            '<div class="absolute bottom-2.5 left-3 right-3 text-white z-2 flex items-center justify-between">' +
-              '<span class="text-[10px] font-bold text-[#fae6c3] tracking-widest uppercase">' + esc(evt.district) + ' · KERALA</span>' +
-              '<span class="text-[10px] text-[#f4ebd9]/80 font-mono">#' + pad2(index + 1) + '</span>' +
-            '</div>' +
-          '</div>' +
-          '<div class="gateway-card-data">' +
-            '<div>' +
-              '<span class="gateway-tag">TRADITION SPOTLIGHT · ' + pad2(index + 1) + '</span>' +
-              '<span class="gateway-place flex items-start gap-1 font-semibold text-[#8d4328]">' + icon('MapPin', 'w-3.5 h-3.5 shrink-0 mt-0.5 text-[#963d25]') + '<span class="line-clamp-1">' + esc(evt.venue) + '</span></span>' +
-              '<h5 class="gateway-card-title line-clamp-2">' + esc(evt.title) + '</h5>' +
-              '<div class="flex flex-wrap items-center gap-1.5 my-2">' +
-                '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-[#faeee5] text-[#963d25] border border-[#f0d5be]">' + icon('Clock', 'w-3.5 h-3.5') + '<span>' + esc(evt.time) + '</span></span>' +
-                '<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10.5px] font-medium bg-[#f5eedf] text-[#5c3e2e] border border-[#e8dbc7]">' + icon('Calendar', 'w-3 h-3 text-[#806b59]') + '<span>' + esc(evt.date) + '</span></span>' +
-              '</div>' +
-              '<p class="line-clamp-3 text-xs text-[#705e52] leading-relaxed">' + esc(evt.description) + '</p>' +
-            '</div>' +
-            '<div class="pt-2.5 mt-2 border-t border-[#ebdcc7] flex items-center justify-between gap-2">' +
-              '<a href="' + esc(evt.googleMapsUrl) + '" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-[#963d25] hover:bg-[#7d321e] text-white shadow-sm transition-all cursor-pointer" title="Get Google Maps directions to ' + esc(evt.venue) + '">' +
-                icon('Navigation', 'w-3.5 h-3.5') + '<span>Directions</span>' + icon('ExternalLink', 'w-3 h-3 opacity-80') + '</a>' +
-              '<button type="button" data-action="story" data-evt="' + esc(evt.id) + '" class="inline-flex items-center justify-center gap-1 px-2.5 py-1.5 rounded-lg text-xs font-semibold bg-[#f2ebd9] hover:bg-[#ebdcc7] text-[#47271b] border border-[#d2b77f]/50 transition-all cursor-pointer">' +
-                icon('BookOpen', 'w-3 h-3 text-[#963d25]') + '<span>Story</span></button>' +
-            '</div>' +
-          '</div>' +
+            '<span class="gateway-image-hint">View details</span>' +
+          '</button>' +
         '</article>';
     }).join('');
+  }
+
+  /* =========================================================
+     MODAL: GATEWAY EVENT DETAILS
+     ========================================================= */
+  function closeGatewayEventModal() {
+    var root = $('gatewayEventModal');
+    if (root) root.remove();
+  }
+
+  function renderGatewayEventModal(evt) {
+    if (!evt) return;
+    closeGatewayEventModal();
+
+    var root = document.createElement('div');
+    root.id = 'gatewayEventModal';
+    root.className = 'gateway-event-modal';
+    root.setAttribute('role', 'presentation');
+    root.innerHTML =
+      '<div class="gateway-event-backdrop" data-action="close-gateway-event">' +
+        '<section class="gateway-event-dialog" role="dialog" aria-modal="true" aria-label="Cultural destination details">' +
+          '<header class="gateway-event-header">' +
+            '<div><span class="gateway-event-kicker">LIVING CULTURE · DESTINATION</span>' +
+            '<h2 class="gateway-event-title">' + esc(evt.title) + '</h2></div>' +
+            '<button type="button" class="gateway-event-close" data-action="close-gateway-event" aria-label="Close popup">&times;</button>' +
+          '</header>' +
+          '<div class="gateway-event-body">' +
+            '<div class="gateway-event-photo-wrap"><img class="gateway-event-photo" src="' + esc(evt.image) + '" alt="' + esc(evt.title) + '" onerror="' + ERR_IMG + '" /></div>' +
+            '<div class="gateway-event-info">' +
+              '<div class="gateway-event-detail"><span class="gateway-event-detail-label">DESTINATION</span><span class="gateway-event-detail-value">' + esc(evt.venue || evt.district || activeDistrict()) + '</span></div>' +
+              '<div class="gateway-event-detail"><span class="gateway-event-detail-label">TIME</span><span class="gateway-event-detail-value">' + esc(evt.time || 'Please check event schedule') + '</span></div>' +
+              '<button type="button" class="gateway-event-story" data-action="story" data-evt="' + esc(evt.id) + '">' +
+                '<span>Explore Story</span><span aria-hidden="true">&rarr;</span>' +
+              '</button>' +
+            '</div>' +
+          '</div>' +
+        '</section>' +
+      '</div>';
+
+    document.body.appendChild(root);
+    var backdrop = root.querySelector('.gateway-event-backdrop');
+    var dialog = root.querySelector('.gateway-event-dialog');
+    if (backdrop && dialog) {
+      backdrop.addEventListener('click', function (event) {
+        if (event.target === backdrop) closeGatewayEventModal();
+      });
+    }
   }
 
   function bindGatewayScroll() {
@@ -788,7 +809,17 @@
         if (sc) sc.scrollBy({ left: el.getAttribute('data-dir') === 'left' ? -380 : 380, behavior: 'smooth' });
         break;
       }
+      case 'open-gateway-event': {
+        var eventId = el.getAttribute('data-evt');
+        var gatewayEvents = window.getEventsForDistrict(activeDistrict());
+        var selectedEvent = gatewayEvents.filter(function (item) { return item.id === eventId; })[0];
+        if (selectedEvent) renderGatewayEventModal(selectedEvent);
+        break;
+      }
+      case 'close-gateway-event':
+        closeGatewayEventModal(); break;
       case 'story': {
+        closeGatewayEventModal();
         var evts = window.getEventsForDistrict(activeDistrict());
         var evt = evts.filter(function (x) { return x.id === el.getAttribute('data-evt'); })[0];
         var all = state.allListings;
@@ -867,6 +898,9 @@
 
     document.addEventListener('click', onClick);
     document.addEventListener('input', onInput);
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeGatewayEventModal();
+    });
 
     window.addEventListener('scroll', trailScroll, { passive: true });
     trailScroll();
