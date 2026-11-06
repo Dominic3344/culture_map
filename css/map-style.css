@@ -1,0 +1,795 @@
+
+/* =====================================================
+   1. GLOBAL STYLES
+===================================================== */
+
+html,
+body {
+    min-height: 100%;
+    margin: 0;
+}
+
+#mapwrapper {
+    width: 100%;
+    max-width: none;
+    min-width: 220px;
+    margin: 0;
+    padding: 0;
+
+    font-family: Arial, Helvetica, sans-serif;
+    background: transparent;
+
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#visnames {
+    font-size: 16px;
+}
+
+
+/* =====================================================
+   2. MAP VIEWPORT
+===================================================== */
+
+#mapbase {
+    position: relative;
+
+    width: 100%;
+    height: 85vh;
+    min-height: 520px;
+
+    overflow: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+
+    perspective: 1800px;
+    perspective-origin: 50% 50%;
+
+    background: #f7f8fa;
+    border-radius: 10px;
+
+    scrollbar-gutter: stable;
+}
+
+
+/* =====================================================
+   3. INDIA SVG MAP
+===================================================== */
+
+#mapbase svg {
+    display: block;
+
+    width: 1077px;
+    min-width: 800px;
+    max-width: none;
+
+    height: auto;
+    max-height: none;
+
+    margin: 0 auto;
+    padding-right: 364px;
+
+    transform: rotateX(7deg) rotateZ(-1deg);
+    transform-origin: center center;
+    transform-style: preserve-3d;
+
+    overflow: visible;
+    isolation: isolate;
+
+    filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.2));
+}
+
+
+/* =====================================================
+   4. MOBILE RESPONSIVENESS
+===================================================== */
+
+@media (max-width: 700px) {
+
+    #mapbase {
+        height: 82vh;
+        min-height: 420px;
+    }
+
+    #mapbase svg {
+        width: 1100px;
+        min-width: 1100px;
+    }
+}
+
+
+/* =====================================================
+   5. TOOLTIP
+===================================================== */
+
+#tryjstip {
+    font: 14px/16px Trebuchet MS, Helvetica, Arial, sans-serif;
+
+    display: none;
+    max-width: 40%;
+    padding: 5px;
+
+    border: 1px solid #404040;
+    color: #404040;
+
+    z-index: 1000;
+    float: left;
+    position: absolute;
+
+    background: rgba(255, 255, 255, 0.9);
+
+    word-break: keep-all;
+
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#tryjstip p {
+    margin: 0 !important;
+    color: #404040 !important;
+}
+
+#tryjstip img {
+    float: left;
+    padding: 3px;
+    max-width: 100%;
+}
+
+
+/* =====================================================
+   6. STATE ELEVATION ANIMATION
+===================================================== */
+
+#mapbase svg path[id^="tryjs"] {
+    transform-box: fill-box;
+    transform-origin: center center;
+
+    transform: translateY(0) scale(1);
+
+    transition:
+        transform 550ms cubic-bezier(0.22, 0.75, 0.25, 1),
+        filter 550ms ease;
+
+    cursor: pointer;
+}
+
+#mapbase svg path[id^="tryjs"].state-elevated {
+    transform: translateY(-8px) scale(1.018);
+
+    filter:
+        drop-shadow(0 0 3px rgba(0, 0, 0, 0.18))
+        drop-shadow(0 0 7px rgba(0, 0, 0, 0.16))
+        drop-shadow(0 8px 10px rgba(0, 0, 0, 0.22));
+}
+
+
+/* =====================================================
+   7. CULTURAL ICONS
+===================================================== */
+
+/* KERALA */
+
+#kerala-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.kerala-icon-wrapper {
+    width: 26%;
+    height: 43%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.kerala-houseboat {
+    width: 31px;
+    height: 67px;
+
+    object-fit: contain;
+    transform: rotate(360deg);
+
+    pointer-events: none;
+}
+
+
+/* KARNATAKA */
+
+#karnataka-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.karnataka-icon-wrapper {
+    width: 58%;
+    height: 128%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.karnataka-palace {
+    width: 57px;
+    height: 65px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* MAHARASHTRA */
+
+#maharashtra-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.maharashtra-icon-wrapper {
+    width: 7%;
+    height: 47%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.maharashtra-icon {
+    width: 52px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* PUNJAB */
+
+#punjab-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.punjab-icon-wrapper {
+    width: 110%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.punjab-icon {
+    width: 42px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* HARYANA */
+
+#haryana-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.haryana-icon-wrapper {
+    width: 120%;
+    height: 111%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.haryana-icon {
+    width: 26px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* UTTAR PRADESH */
+
+#uttar-pradesh-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.uttar-pradesh-icon-wrapper {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uttar-pradesh-icon {
+    width: 68px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* MADHYA PRADESH */
+
+#madhya-pradesh-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.madhya-pradesh-icon-wrapper {
+    width: 100%;
+    height: 144%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.madhya-pradesh-icon {
+    width: 62px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* WEST BENGAL */
+
+#west-bengal-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.west-bengal-icon-wrapper {
+    width: 96%;
+    height: 168%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.west-bengal-icon {
+    width: 42px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* TELANGANA */
+
+#telangana-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.telangana-icon-wrapper {
+    width: 69%;
+    height: 93%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.telangana-icon {
+    width: 40px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* TAMIL NADU */
+
+#tamil-nadu-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.tamil-nadu-icon-wrapper {
+    width: 98%;
+    height: 108%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tamil-nadu-icon {
+    width: 38px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* GUJARAT */
+
+#gujarat-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.gujarat-icon-wrapper {
+    width: 147%;
+    height: 47%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gujarat-icon {
+    width: 53px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* JHARKHAND */
+
+#jharkhand-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.jharkhand-icon-wrapper {
+    width: 67%;
+    height: 114%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.jharkhand-icon {
+    width: 30px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* UTTARAKHAND */
+
+#uttarakhand-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.uttarakhand-icon-wrapper {
+    width: 112%;
+    height: 94%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.uttarakhand-icon {
+    width: 38px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* ANDHRA PRADESH */
+
+#andhra-pradesh-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.andhra-pradesh-icon-wrapper {
+    width: 0%;
+    height: 163%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.andhra-pradesh-icon {
+    width: 38px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* RAJASTHAN */
+
+#rajasthan-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.rajasthan-icon-wrapper {
+    width: 84%;
+    height: 82%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rajasthan-icon {
+    width: 80px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* ODISHA */
+
+#odisha-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.odisha-icon-wrapper {
+    width: 118%;
+    height: 60%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.odisha-icon {
+    width: 51px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* CHHATTISGARH */
+
+#chhattisgarh-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.chhattisgarh-icon-wrapper {
+    width: 54%;
+    height: 80%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.chhattisgarh-icon {
+    width: 36px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* BIHAR */
+
+#bihar-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.bihar-icon-wrapper {
+    width: 100%;
+    height: 108%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.bihar-icon {
+    width: 36px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* ASSAM */
+
+#assam-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.assam-icon-wrapper {
+    width: 112%;
+    height: 83%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.assam-icon {
+    width: 44px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* MEGHALAYA */
+
+#meghalaya-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.meghalaya-icon-wrapper {
+    width: 96%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meghalaya-icon {
+    width: 38px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* MIZORAM */
+
+#mizoram-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.mizoram-icon-wrapper {
+    width: 95%;
+    height: 92%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mizoram-icon {
+    width: 30px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* MANIPUR */
+
+#manipur-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.manipur-icon-wrapper {
+    width: 100%;
+    height: 102%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.manipur-icon {
+    width: 22px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* ARUNACHAL PRADESH */
+
+#arunachal-pradesh-icon-container {
+    overflow: visible;
+    pointer-events: none;
+}
+
+.arunachal-pradesh-icon-wrapper {
+    width: 100%;
+    height: 78%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arunachal-pradesh-icon {
+    width: 57px;
+    height: 80px;
+
+    object-fit: contain;
+    pointer-events: none;
+}
+
+
+/* =====================================================
+   8. CULTURAL ICON ELEVATION
+===================================================== */
+
+#mapbase svg image.state-elevated-icon,
+#mapbase svg foreignObject.state-elevated-icon {
+    transform-box: fill-box;
+    transform-origin: center center;
+
+    transform: translateY(-8px) scale(1.018);
+
+    transition:
+        transform 550ms cubic-bezier(0.22, 0.75, 0.25, 1);
+}
+
+
+/* =====================================================
+   9. JAMMU & KASHMIR MERGED REGION
+===================================================== */
+
+/* The merged SVG path uses ID tryjs22 */
+
+#mapbase svg #tryjs22 {
+    fill: #406993;
+    stroke: #FFFFFF;
+    stroke-width: 1;
+    stroke-linejoin: round;
+    paint-order: stroke fill;
+}
+
+
+/* =====================================================
+   10. REDUCED MOTION
+===================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    #mapbase svg path[id^="tryjs"],
+    #mapbase svg image.state-elevated-icon,
+    #mapbase svg foreignObject.state-elevated-icon {
+        transition: none;
+    }
+}

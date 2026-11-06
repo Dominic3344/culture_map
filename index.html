@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="en">
+  <head>
+      <link href="css/map-style.css" rel="stylesheet" type="text/css"/>
+      <script src="js/map-config.js"></script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Living Culture Map & Discovery Platform</title>
+    <meta
+      name="description"
+      content="A community-informed map and discovery platform to explore regional cultural experiences, artists, performances, craft workshops, and verified local traditions."
+    />
+    <meta property="og:title" content="The Living Culture Map & Discovery Platform" />
+    <meta
+      property="og:description"
+      content="A community-informed map and discovery platform to explore regional cultural experiences, artists, performances, craft workshops, and verified local traditions."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div id="root">
+      <div class="min-h-screen bg-[#f8f3e9] text-[#25140f] flex flex-col font-sans selection:bg-[#e7b75e] selection:text-[#25140f]">
+        <header class="culture-nav">
+          <a class="culture-brand" href="#top">
+            <span class="culture-mark">✺</span>
+            <span>THE LIVING CULTURE MAP</span>
+          </a>
+          <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
+            <a href="#mapwrapper" class="hover:text-[#963d25] transition-colors">Explore India</a>
+            <a href="#district-journey" class="hover:text-[#963d25] transition-colors">Cultural Trail</a>
+            <a href="#culture-gateway" class="hover:text-[#963d25] transition-colors">Temple Gateway</a>
+            <a
+              href="#cultural-directory"
+              class="hover:text-[#963d25] transition-colors flex items-center gap-1.5 font-semibold text-[#963d25]"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide w-4 h-4"
+              >
+                <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path>
+                <circle cx="12" cy="12" r="10"></circle>
+              </svg>
+              <span>Directory (18)</span>
+            </a>
+          </nav>
+          <div class="flex items-center gap-3">
+            <button
+              data-action="open-contribute"
+              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-[#963d25] text-white hover:bg-[#7d321e] transition-all shadow-sm active:scale-95 cursor-pointer"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide w-4 h-4"
+              >
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 12h8"></path>
+                <path d="M12 8v8"></path>
+              </svg>
+              <span>Contribute</span>
+            </button>
+            <button
+              data-action="open-moderator"
+              class="relative inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium border border-[#d2b77f] bg-[#fffaf0] hover:bg-[#f7edd6] text-[#47271b] transition-all cursor-pointer"
+              title="Curator &amp; Moderation Portal"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="lucide w-4 h-4 text-[#963d25]"
+              >
+                <path
+                  d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"
+                ></path>
+                <path d="m9 12 2 2 4-4"></path>
+              </svg>
+              <span class="hidden sm:inline">Moderator Hub</span>
+              <span id="navPending"></span>
+            </button>
+          </div>
+        </header>
+        <section class="culture-hero" id="top">
+          <div class="culture-hero-copy">
+            <div class="culture-eyebrow">INDIA · PEOPLE · PLACE · PRACTICE</div>
+            <h1>
+              Every state holds
+              <br />
+              <em>a thousand stories.</em>
+            </h1>
+            <p>
+              Choose a state on the map. Open its cultural gateway and discover the festivals, art forms, performances, and heritage craft
+              communities that keep our living traditions alive.
+            </p>
+            <div class="flex flex-wrap items-center gap-4 mt-6">
+              <a class="culture-hero-link" href="#mapwrapper">
+                Explore Interactive Atlas
+                <span>↓</span>
+              </a>
+              <a
+                href="#cultural-directory"
+                class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-semibold uppercase tracking-wider border border-[#b8915b] text-[#47271b] bg-white/70 hover:bg-white transition-all shadow-sm"
+              >
+                Browse Verified Directory
+                <span>→</span>
+              </a>
+            </div>
+          </div>
+          <div class="culture-hero-art" aria-hidden="true">
+            <div class="hero-art-ring ring-one"></div>
+            <div class="hero-art-ring ring-two"></div>
+            <div class="hero-art-symbol">भारत</div>
+            <div class="hero-art-caption">
+              ONE LAND
+              <br />
+              MANY LIVING CULTURES
+            </div>
+          </div>
+        </section>
+        <div class="relative py-8" id="map-section">
+          <div class="map-intro max-w-4xl mx-auto text-center px-4 mb-6">
+            <div class="culture-eyebrow">THE INTERACTIVE ATLAS</div>
+            <h2 class="text-3xl font-serif text-[#47271b] mb-2 font-bold">Choose your cultural destination</h2>
+            <p class="text-[#806b59] text-sm max-w-xl mx-auto">
+              Hover to preview a state. Click to travel to its cultural gateway and explore regional arts, temple festivals, and artisan
+              traditions.
+            </p>
+          </div>
+          <div id="mapwrapper">
+            <div id="mapbase">
+              <svg id="indiaSvg" version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 758" xml:space="preserve">
+                <g id="indiaPaths"></g>
+              </svg>
+            </div>
+          </div>
+          <div class="clear-both"></div>
+        </div>
+        <div id="trail-root">
+          <section class="district-journey" id="district-journey" aria-label="District journey">
+            <div class="journey-heading">
+              <div class="culture-eyebrow">YOUR NEXT DESTINATIONS</div>
+              <h2 id="journeyTitle">Kerala — follow the cultural trail</h2>
+              <p id="journeyDescription">
+                Scroll down to follow the dotted route through featured districts of Kerala. Click any destination to open its cultural
+                gateway, view scheduled activities with timings, and get instant Google Maps directions.
+              </p>
+            </div>
+            <div class="district-journey-track" id="districtJourneyTrack">
+              <div class="district-journey-stage" id="districtJourneyStage">
+                <div class="journey-stage-topline">
+                  <span class="journey-state-label" id="journeyStateLabel">INDIA · KERALA</span>
+                  <span class="journey-progress-label" id="journeyProgressLabel"></span>
+                </div>
+                <div class="journey-route-wrap">
+                  <svg
+                    class="journey-route-svg"
+                    id="journeyRouteSvg"
+                    viewBox="0 0 1000 160"
+                    role="img"
+                    aria-label="A looping dotted route with a moving map pointer"
+                    preserveAspectRatio="none"
+                  >
+                    <path
+                      class="journey-route-shadow"
+                      d="M25 90 C25 42 125 42 125 90 C125 138 225 138 225 90 C225 42 325 42 325 90 C325 138 425 138 425 90 C425 42 525 42 525 90 C525 138 625 138 625 90 C625 42 725 42 725 90 C725 138 825 138 825 90 C825 42 925 42 925 90 C925 138 975 138 975 90"
+                    ></path>
+                    <path
+                      class="journey-route-dots"
+                      id="journeyRoutePath"
+                      d="M25 90 C25 42 125 42 125 90 C125 138 225 138 225 90 C225 42 325 42 325 90 C325 138 425 138 425 90 C425 42 525 42 525 90 C525 138 625 138 625 90 C625 42 725 42 725 90 C725 138 825 138 825 90 C825 42 925 42 925 90 C925 138 975 138 975 90"
+                    ></path>
+                    <g id="journeyPointer" class="journey-pointer" transform="translate(25 80)" aria-hidden="true">
+                      <path
+                        class="journey-pin-shape"
+                        d="M0 8 C-6 0 -14 -9 -14 -18 C-14 -27 -8 -33 0 -33 C8 -33 14 -27 14 -18 C14 -9 6 0 0 8Z"
+                      ></path>
+                      <circle class="journey-pin-center" cx="0" cy="-18" r="4.5"></circle>
+                    </g>
+                  </svg>
+                </div>
+                <div class="journey-stop-scroller" id="journeyStopScroller" aria-label="Featured districts; scroll sideways to browse">
+                  <div class="journey-stop-list" id="journeyStopList"></div>
+                </div>
+                <div class="journey-footer">
+                  <span>✦ THE JOURNEY MOVES AS YOU SCROLL ✦</span>
+                  <span class="journey-scroll-cue">
+                    Continue down
+                    <b>↓</b>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <section class="culture-gateway" id="culture-gateway">
+          <div class="gateway-heading text-center max-w-4xl mx-auto px-4 mb-4">
+            <div class="culture-eyebrow">THE CULTURAL GATEWAY</div>
+            <h2 id="gatewayHeading" class="text-3xl font-serif text-[#47271b] font-bold">
+              Thrissur, Kerala — a doorway into living heritage
+            </h2>
+            <p id="gatewaySubheading" class="text-sm text-[#806b59] mt-2">
+              The sacred temple gateway to Thrissur is closed. Scroll down slowly to swing open the doors.
+            </p>
+          </div>
+          <div class="gateway-scroll-track" id="gatewayScrollTrack">
+            <div class="gateway-stage" id="gatewayStage" aria-live="polite" style="">
+              <div class="gateway-scene">
+                <div class="gateway-content custom-scrollbar">
+                  <div class="flex flex-wrap items-center justify-between gap-2 border-b border-[#ebdcc7] pb-3 mb-3">
+                    <div class="repadding">
+                      <div class="gateway-kicker" id="gatewayKicker">INDIA · KERALA · THRISSUR</div>
+                      <h3 id="gatewayStateName" class="!my-1 text-2xl sm:text-3xl font-serif font-bold text-[#47271b]">
+                        Upcoming Cultural Activities in Thrissur
+                      </h3>
+                    </div>
+                    <div class="flex flex-wrap items-center gap-1.5 pt-1" id="gatewayDistrictBar"></div>
+                  </div>
+                  <div class="gateway-section-head !my-1 flex items-center justify-between gap-3">
+                    <div>
+                      <span class="culture-eyebrow flex items-center gap-1 text-[10px]">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="24"
+                          height="24"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          class="lucide w-3.5 h-3.5 text-[#e7b75e]"
+                        >
+                          <path
+                            d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"
+                          ></path>
+                          <path d="M20 2v4"></path>
+                          <path d="M22 4h-4"></path>
+                          <circle cx="4" cy="20" r="2"></circle>
+                        </svg>
+                        <span>CULTURAL SPOTLIGHTS &amp; UPCOMING EVENTS</span>
+                      </span>
+                      <h4 id="gatewayEventsHeading" class="text-base sm:text-lg font-serif font-bold text-[#47271b]">
+                        Live Invocations, Sabhas &amp; Guild Tours
+                      </h4>
+                    </div>
+                    <div class="flex items-center gap-3">
+                      <span class="gateway-counter" id="gatewayCounter">04 UPCOMING ACTIVITIES</span>
+                      <div class="hidden sm:flex items-center gap-1">
+                        <button
+                          type="button"
+                          data-action="scroll-cards"
+                          data-dir="left"
+                          class="p-1.5 rounded-full bg-[#f4ebd9] hover:bg-[#ebdcc7] text-[#5c3e2e] transition shadow-xs cursor-pointer"
+                          title="Scroll left"
+                          aria-label="Scroll left"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide w-4 h-4"
+                          >
+                            <path d="m15 18-6-6 6-6"></path>
+                          </svg>
+                        </button>
+                        <button
+                          type="button"
+                          data-action="scroll-cards"
+                          data-dir="right"
+                          class="p-1.5 rounded-full bg-[#f4ebd9] hover:bg-[#ebdcc7] text-[#5c3e2e] transition shadow-xs cursor-pointer"
+                          title="Scroll right"
+                          aria-label="Scroll right"
+                        >
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide w-4 h-4"
+                          >
+                            <path d="m9 18 6-6-6-6"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="gateway-district-scroll" id="gatewayCardsScroll"><div class="gateway-cards" id="gatewayCards"></div></div>
+                  
+                </div>
+                <div class="gateway-door gateway-door-left" aria-hidden="true">
+                  <img
+                    src="image/door-texture.jpg"
+                    alt=""
+                    onerror="
+                      this.onerror = null;
+                      this.src = 'image/door-fallback.jpg';
+                    "
+                  />
+                </div>
+                <div class="gateway-door gateway-door-right" aria-hidden="true">
+                  <img
+                    src="image/door-texture.jpg"
+                    alt=""
+                    onerror="
+                      this.onerror = null;
+                      this.src = 'image/door-fallback.jpg';
+                    "
+                  />
+                </div>
+              </div>
+              <img class="gateway-roof asset-layer" src="image/torana-roof.png" alt="" />
+              <img class="gateway-stage-pillar" src="image/pillar.png" alt="" />
+              <img class="gateway-stage-pillar-right" src="image/pillar.png" alt="" />
+              <div class="gateway-door-seam" aria-hidden="true"></div>
+              <div class="gateway-scroll-hint" id="gatewayScrollHint">
+                SCROLL TO OPEN
+                <span>↓</span>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="py-16 px-4 md:px-8 max-w-7xl mx-auto" id="cultural-directory">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 pb-6 border-b border-[#e4d7c2]">
+            <div>
+              <div class="culture-eyebrow flex items-center gap-1.5 text-[#963d25] font-semibold text-xs tracking-widest uppercase">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide w-3.5 h-3.5"
+                >
+                  <path
+                    d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"
+                  ></path>
+                  <path d="M20 2v4"></path>
+                  <path d="M22 4h-4"></path>
+                  <circle cx="4" cy="20" r="2"></circle>
+                </svg>
+                <span>Community Cultural Discovery</span>
+              </div>
+              <h2 class="text-3xl md:text-4xl font-serif text-[#47271b] font-bold mt-1">Cultural Directory &amp; Experiences</h2>
+              <p class="text-sm text-[#806b59] mt-2 max-w-2xl">
+                Explore authentic traditions, master artisans, and ritual performances across Kerala districts. Filter by art form,
+                district, or season, and learn direct visiting guidelines.
+              </p>
+            </div>
+            <div class="flex items-center gap-3">
+              <button
+                data-action="open-contribute"
+                class="px-4 py-2 rounded-full text-xs font-semibold bg-[#963d25] hover:bg-[#7d321e] text-white transition-all shadow-sm flex items-center gap-2 cursor-pointer active:scale-95"
+              >
+                <span>+ Submit a Tradition</span>
+              </button>
+            </div>
+          </div>
+          <div class="bg-[#fffdfa] border border-[#e4d7c2] rounded-2xl p-5 shadow-sm mb-8 space-y-4">
+            <div class="flex flex-col sm:flex-row gap-3">
+              <div class="relative flex-1">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-[#806b59]"
+                >
+                  <path d="m21 21-4.34-4.34"></path>
+                  <circle cx="11" cy="11" r="8"></circle>
+                </svg>
+                <input
+                  id="dirSearch"
+                  type="text"
+                  placeholder="Search traditions, rituals, artists, gurus, or keywords (e.g. Theyyam, Pooram, Weaving)..."
+                  class="w-full pl-10 pr-4 py-2.5 text-sm bg-white border border-[#d2b77f]/60 rounded-xl focus:outline-none focus:ring-2 focus:ring-[#963d25]/30 focus:border-[#963d25] text-[#25140f] placeholder:text-[#a08f80]"
+                />
+              </div>
+              <div id="dirResetSlot"></div>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-4 gap-3 pt-2 border-t border-[#f0e6d6]">
+              <div>
+                <label class="block text-[11px] font-semibold text-[#806b59] uppercase tracking-wider mb-1">District</label>
+                <select
+                  id="dirDistrict"
+                  class="w-full text-xs bg-white border border-[#d2b77f]/60 rounded-lg px-2.5 py-2 text-[#47271b] focus:outline-none focus:border-[#963d25]"
+                >
+                  <option value="all">All Districts</option>
+                  <option value="Kannur">Kannur</option>
+                  <option value="Thrissur">Thrissur</option>
+                  <option value="Alappuzha">Alappuzha</option>
+                  <option value="Kozhikode">Kozhikode</option>
+                  <option value="Palakkad">Palakkad</option>
+                  <option value="Pathanamthitta">Pathanamthitta</option>
+                  <option value="Wayanad">Wayanad</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-[#806b59] uppercase tracking-wider mb-1">Art Form</label>
+                <select
+                  id="dirArtForm"
+                  class="w-full text-xs bg-white border border-[#d2b77f]/60 rounded-lg px-2.5 py-2 text-[#47271b] focus:outline-none focus:border-[#963d25]"
+                >
+                  <option value="all">All Art Forms</option>
+                  <option value="Ritual Performance">Ritual Performance</option>
+                  <option value="Classical Dance &amp; Theatre">Classical Dance &amp; Theatre</option>
+                  <option value="Temple Percussion &amp; Melam">Temple Percussion &amp; Melam</option>
+                  <option value="Traditional Craft &amp; Metalwork">Traditional Craft &amp; Metalwork</option>
+                  <option value="Handloom &amp; Textile">Handloom &amp; Textile</option>
+                  <option value="Folk Theatre &amp; Puppetry">Folk Theatre &amp; Puppetry</option>
+                  <option value="Martial Arts &amp; Kalari">Martial Arts &amp; Kalari</option>
+                  <option value="Folk &amp; Devotional Music">Folk &amp; Devotional Music</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-[#806b59] uppercase tracking-wider mb-1">Experience Type</label>
+                <select
+                  id="dirExperience"
+                  class="w-full text-xs bg-white border border-[#d2b77f]/60 rounded-lg px-2.5 py-2 text-[#47271b] focus:outline-none focus:border-[#963d25]"
+                >
+                  <option value="all">All Experience Types</option>
+                  <option value="Ritual Performance">Ritual Performance</option>
+                  <option value="Temple Festival">Temple Festival</option>
+                  <option value="Craft Workshop">Craft Workshop</option>
+                  <option value="Heritage Site">Heritage Site</option>
+                  <option value="Living Sabha">Living Sabha</option>
+                </select>
+              </div>
+              <div>
+                <label class="block text-[11px] font-semibold text-[#806b59] uppercase tracking-wider mb-1">Verification Status</label>
+                <select
+                  id="dirStatus"
+                  class="w-full text-xs bg-white border border-[#d2b77f]/60 rounded-lg px-2.5 py-2 text-[#47271b] focus:outline-none focus:border-[#963d25]"
+                >
+                  <option value="all">All Listings</option>
+                  <option value="verified">Verified by Cultural Scholars</option>
+                  <option value="pending">Community Submitted (Pending)</option>
+                </select>
+              </div>
+            </div>
+            <div class="flex flex-wrap items-center justify-between gap-3 pt-2 text-xs text-[#806b59]">
+              <div class="font-medium" id="dirCounter"></div>
+              <div class="flex flex-wrap items-center gap-1.5" id="dirPills"></div>
+            </div>
+          </div>
+          <div id="dirResults"></div>
+        </section>
+        <div id="modalListing"></div>
+        <div id="modalContribute" hidden>
+          <div
+            class="fixed inset-0 z-50 overflow-y-auto bg-black/60 backdrop-blur-sm flex items-center justify-center p-3 sm:p-5"
+            role="dialog"
+            aria-modal="true"
+          >
+            <div
+              class="relative bg-[#fffdfa] w-full max-w-2xl rounded-3xl border border-[#d6b16f] shadow-2xl overflow-hidden max-h-[92vh] flex flex-col my-auto"
+            >
+              <div class="flex items-center justify-between px-6 py-4 border-b border-[#ebdcc7] bg-[#fbf5eb]">
+                <div>
+                  <div class="flex items-center gap-1.5 text-xs font-bold text-[#963d25] uppercase tracking-wider">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide w-3.5 h-3.5"
+                    >
+                      <path
+                        d="M11.017 2.814a1 1 0 0 1 1.966 0l1.051 5.558a2 2 0 0 0 1.594 1.594l5.558 1.051a1 1 0 0 1 0 1.966l-5.558 1.051a2 2 0 0 0-1.594 1.594l-1.051 5.558a1 1 0 0 1-1.966 0l-1.051-5.558a2 2 0 0 0-1.594-1.594l-5.558-1.051a1 1 0 0 1 0-1.966l5.558-1.051a2 2 0 0 0 1.594-1.594z"
+                      ></path>
+                      <path d="M20 2v4"></path>
+                      <path d="M22 4h-4"></path>
+                      <circle cx="4" cy="20" r="2"></circle>
+                    </svg>
+                    <span>Community Submission</span>
+                  </div>
+                  <h3 class="text-xl font-serif font-bold text-[#47271b]">Contribute a Cultural Listing</h3>
+                </div>
+                <button
+                  data-action="close-contribute"
+                  class="p-1.5 rounded-full text-[#5c3e2e] hover:bg-[#ede0ce] transition-colors cursor-pointer"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="lucide w-5 h-5"
+                  >
+                    <path d="M18 6 6 18"></path>
+                    <path d="m6 6 12 12"></path>
+                  </svg>
+                </button>
+              </div>
+              <form id="contribForm" class="overflow-y-auto custom-scrollbar p-6 space-y-4">
+                <div id="contribError"></div>
+                <div class="bg-[#fff9ef] p-3 rounded-xl border border-[#ebd6b8] text-xs text-[#735848]">
+                  <strong>Community Verified Protocol:</strong>
+                  Submitted listings enter the moderator review portal with a
+                  <em>Community Submitted</em>
+                  badge. Once verified by our cultural scholars, they receive an official verification badge.
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-[#47271b] mb-1">Name of Art Form, Festival, or Tradition *</label>
+                  <input
+                    type="text"
+                    name="title"
+                    required=""
+                    placeholder="e.g. Muchilot Bhagavathi Theyyam or Aranmula Kannadi Guild"
+                    value=""
+                    class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                  />
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Art Form Category *</label>
+                    <select
+                      name="artForm"
+                      class="w-full text-xs px-3 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    >
+                      <option value="Ritual Performance" selected="">Ritual Performance</option>
+                      <option value="Classical Dance &amp; Theatre">Classical Dance &amp; Theatre</option>
+                      <option value="Temple Percussion &amp; Melam">Temple Percussion &amp; Melam</option>
+                      <option value="Traditional Craft &amp; Metalwork">Traditional Craft &amp; Metalwork</option>
+                      <option value="Handloom &amp; Textile">Handloom &amp; Textile</option>
+                      <option value="Folk Theatre &amp; Puppetry">Folk Theatre &amp; Puppetry</option>
+                      <option value="Martial Arts &amp; Kalari">Martial Arts &amp; Kalari</option>
+                      <option value="Folk &amp; Devotional Music">Folk &amp; Devotional Music</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Experience Type *</label>
+                    <select
+                      name="experienceType"
+                      class="w-full text-xs px-3 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    >
+                      <option value="Ritual Performance" selected="">Ritual Performance</option>
+                      <option value="Temple Festival">Temple Festival</option>
+                      <option value="Craft Workshop">Craft Workshop</option>
+                      <option value="Heritage Site">Heritage Site</option>
+                      <option value="Living Sabha">Living Sabha</option>
+                      <option value="Exhibition &amp; Guild">Exhibition &amp; Guild</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">District *</label>
+                    <select
+                      name="district"
+                      class="w-full text-xs px-3 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    >
+                      <option value="Kannur" selected="">Kannur</option>
+                      <option value="Thrissur">Thrissur</option>
+                      <option value="Alappuzha">Alappuzha</option>
+                      <option value="Kozhikode">Kozhikode</option>
+                      <option value="Palakkad">Palakkad</option>
+                      <option value="Pathanamthitta">Pathanamthitta</option>
+                      <option value="Wayanad">Wayanad</option>
+                      <option value="Thiruvananthapuram">Thiruvananthapuram</option>
+                      <option value="Ernakulam">Ernakulam</option>
+                      <option value="Kollam">Kollam</option>
+                      <option value="Kottayam">Kottayam</option>
+                      <option value="Idukki">Idukki</option>
+                      <option value="Malappuram">Malappuram</option>
+                      <option value="Kasaragod">Kasaragod</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Specific Venue or Locality *</label>
+                    <input
+                      type="text"
+                      name="locality"
+                      required=""
+                      placeholder="e.g. Parassini Kavu or Cheruthuruthy"
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Dates or Seasonality Timing *</label>
+                    <input
+                      type="text"
+                      name="dateOrSeason"
+                      placeholder="e.g. November to April (Annual Kavu calendar)"
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Timing Nature</label>
+                    <select
+                      name="seasonalityType"
+                      class="w-full text-xs px-3 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    >
+                      <option value="Seasonal" selected="">Seasonal / Festival Season</option>
+                      <option value="Year-round">Year-round Practice / Workshop</option>
+                      <option value="Festival-specific">Single Annual Date Specific</option>
+                    </select>
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-[#47271b] mb-1">Brief Overview / Experience Summary *</label>
+                  <textarea
+                    name="description"
+                    rows="2"
+                    required=""
+                    placeholder="A concise summary of what visitors and seekers will witness and experience..."
+                    class="w-full text-xs px-3.5 py-2 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                  ></textarea>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-[#47271b] mb-1">Cultural Background Story &amp; Tradition Heritage</label>
+                  <textarea
+                    name="backgroundStory"
+                    rows="3"
+                    placeholder="Describe the origins, oral lore, ritual pigments, costumes, or craft metallurgy..."
+                    class="w-full text-xs px-3.5 py-2 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                  ></textarea>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-[#47271b] mb-1">Community Significance (Why it matters to local people)</label>
+                  <input
+                    type="text"
+                    name="communitySignificance"
+                    placeholder="e.g. Connects multi-generational agrarian families; preserves indigenous weaving guilds..."
+                    value=""
+                    class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                  />
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Lead Artist, Master Artisan, or Trust</label>
+                    <input
+                      type="text"
+                      name="artistOrOrganiser"
+                      placeholder="e.g. Peruvannan Lineage or Weavers Cooperative"
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Guru Lineage / School</label>
+                    <input
+                      type="text"
+                      name="guruOrLineage"
+                      placeholder="e.g. Kalamandalam or CVN Kalari Tradition"
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Source Website / Devaswom Link</label>
+                    <input
+                      type="url"
+                      name="sourceUrl"
+                      placeholder="https://..."
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Public Social Profile (Instagram/YouTube)</label>
+                    <input
+                      type="url"
+                      name="socialMediaUrl"
+                      placeholder="https://instagram.com/..."
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Photo Image URL</label>
+                    <input
+                      type="url"
+                      name="imageUrl"
+                      placeholder="Leave empty for default high-res cultural image"
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Visiting Etiquette &amp; Guidelines</label>
+                    <input
+                      type="text"
+                      name="visitingEtiquette"
+                      placeholder="e.g. Modest attire; photography guidelines"
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-[#f0e6d6]">
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Your Name (Contributor) *</label>
+                    <input
+                      type="text"
+                      name="contributorName"
+                      required=""
+                      placeholder="Your Name or Organisation"
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                  <div>
+                    <label class="block text-xs font-bold text-[#47271b] mb-1">Your Email / Phone (For Verification)</label>
+                    <input
+                      type="text"
+                      name="contributorContact"
+                      placeholder="name@example.com"
+                      value=""
+                      class="w-full text-xs px-3.5 py-2.5 bg-white border border-[#d2b77f]/70 rounded-xl focus:outline-none focus:border-[#963d25]"
+                    />
+                  </div>
+                </div>
+                <div class="pt-4 border-t border-[#ebdcc7] flex items-center justify-end gap-3">
+                  <button
+                    type="button"
+                    data-action="close-contribute"
+                    class="px-4 py-2 text-xs font-semibold text-[#806b59] hover:text-[#47271b] cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    class="px-6 py-2.5 rounded-xl text-xs font-semibold bg-[#963d25] hover:bg-[#7d321e] text-white transition-all shadow-sm flex items-center gap-2 cursor-pointer active:scale-95"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="24"
+                      height="24"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="lucide w-3.5 h-3.5"
+                    >
+                      <path
+                        d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"
+                      ></path>
+                      <path d="m21.854 2.147-10.94 10.939"></path>
+                    </svg>
+                    <span>Submit for Verification</span>
+                  </button>
+                </div>
+              </form>
+              <div id="contribSuccess" hidden class="p-10 text-center flex flex-col items-center justify-center space-y-3">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide w-14 h-14 text-emerald-600 animate-bounce"
+                >
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="m9 12 2 2 4-4"></path>
+                </svg>
+                <h4 class="text-xl font-serif font-bold text-[#47271b]">Listing Submitted!</h4>
+                <p class="text-sm text-[#705e52] max-w-md">
+                  Thank you for contributing to the Living Culture Map. Your listing has been added to our moderation queue and will be
+                  reviewed by our regional cultural council.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="modalAdmin"></div>
+        <footer class="mt-auto border-t border-[#e4d7c2] bg-[#f2ebd9] py-12 px-6">
+          <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div>
+              <div class="flex items-center justify-center md:justify-start gap-2 font-serif font-bold text-lg text-[#47271b]">
+                <span>✺</span>
+                <span>THE LIVING CULTURE MAP &amp; DISCOVERY PLATFORM</span>
+              </div>
+              <p class="text-xs text-[#806b59] mt-1 max-w-lg">
+                A community-informed cultural discovery network safeguarding living traditions, master artisans, and ritual arts through
+                verified local knowledge.
+              </p>
+            </div>
+            <div class="flex flex-col sm:flex-row items-center gap-4 text-xs font-medium text-[#705e52]">
+              <a href="#top" class="hover:text-[#963d25] transition-colors">Return to Top ↑</a>
+              <span class="hidden sm:inline">·</span>
+              <button data-action="open-contribute" class="hover:text-[#963d25] transition-colors cursor-pointer">Submit Tradition</button>
+              <span class="hidden sm:inline">·</span>
+              <button data-action="open-moderator" class="hover:text-[#963d25] transition-colors cursor-pointer" id="footerCurator">
+                Curator Portal (0 Pending)
+              </button>
+            </div>
+          </div>
+          <div
+            class="max-w-7xl mx-auto mt-8 pt-6 border-t border-[#e4d7c2]/60 text-center text-[11px] text-[#9c897a] flex items-center justify-center gap-1"
+          >
+            <span>Dedicated to the living heritage communities of Kerala and India</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="lucide w-3 h-3 text-[#963d25] inline fill-[#963d25]"
+            >
+              <path
+                d="M2 9.5a5.5 5.5 0 0 1 9.591-3.676.56.56 0 0 0 .818 0A5.49 5.49 0 0 1 22 9.5c0 2.29-1.5 4-3 5.5l-5.492 5.313a2 2 0 0 1-3 .019L5 15c-1.5-1.5-3-3.2-3-5.5"
+              ></path>
+            </svg>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Data -->
+    <script src="js/data-map.js"></script>
+    <script src="js/data-events.js"></script>
+    <script src="js/data-listings.js"></script>
+    <!-- Helpers & icons -->
+    <script src="js/icons.js"></script>
+    <script src="js/utils.js"></script>
+    <!-- App -->
+    <script src="js/app.js"></script>
+    <script src="js/map-icons.js"></script>
+    <script src="js/map-elevation.js"></script>
+  </body>
+</html>

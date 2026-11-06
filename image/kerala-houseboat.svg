@@ -1,0 +1,32 @@
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 110">
+  <g
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="2.5"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <!-- Palm tree -->
+    <path d="M28 65 Q29 43 32 29"/>
+    <path d="M32 30 Q12 17 5 25 Q19 23 32 34
+             Q23 8 8 10 Q24 17 33 32
+             Q33 7 47 4 Q39 19 35 33
+             Q52 14 62 22 Q47 24 35 36
+             Q57 34 61 45 Q47 38 33 39"/>
+
+    <!-- Houseboat roof -->
+    <path d="M42 65 Q59 47 79 65"/>
+    <path d="M45 65 Q60 70 77 65"/>
+
+    <!-- Houseboat body -->
+    <path d="M39 66 Q59 82 91 66
+             Q85 83 69 87 Q51 86 39 66Z"/>
+    <path d="M48 68 V77 M59 69 V80
+             M70 69 V78 M80 68 V75"/>
+
+    <!-- Water -->
+    <path d="M20 91 Q35 86 49 91 T79 91 T105 91"/>
+    <path d="M29 100 Q44 95 59 100 T89 100"/>
+  </g>
+</svg>
