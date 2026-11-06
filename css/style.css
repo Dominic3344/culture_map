@@ -2142,127 +2142,12 @@ body {
 }
 
 /* =========================================
-   HERO SECTION
-========================================= */
-
-.culture-hero {
-    min-height: 490px;
-    max-width: 1320px;
-    margin: auto;
-    padding: 72px clamp(20px, 6vw, 86px);
-    display: grid;
-    grid-template-columns: 1.1fr .9fr;
-    align-items: center;
-    gap: 36px;
-}
-
-.culture-eyebrow {
-    font-size: 9px;
-    letter-spacing: 2.1px;
-    color: var(--culture-rust);
-    font-weight: 900;
-}
-
-.culture-hero h1 {
-    font: 700 clamp(44px, 6vw, 76px)/.99 Georgia, serif;
-    letter-spacing: -2px;
-    margin: 18px 0;
-    color: var(--culture-ink);
-}
-
-.culture-hero h1 em {
-    font-weight: 400;
-    color: var(--culture-rust);
-}
-
-.culture-hero-copy p {
-    max-width: 560px;
-    color: var(--culture-muted);
-    font: 16px/1.85 Georgia, serif;
-}
-
-.culture-hero-link {
-    display: inline-flex;
-    gap: 20px;
-    margin-top: 22px;
-    padding: 13px 18px;
-    background: var(--culture-rust);
-    color: #fff7e8;
-    text-decoration: none;
-    border-radius: 3px;
-    font-size: 11px;
-    font-weight: 800;
-}
-
-.culture-hero-art {
-    height: 320px;
-    position: relative;
-    display: grid;
-    place-items: center;
-    overflow: hidden;
-    background: radial-gradient(
-        circle at 50% 50%,
-        #f2d9a7 0,
-        #e6c38a 42%,
-        #c98f57 100%
-    );
-    border-radius: 48% 48% 8px 8px;
-    box-shadow: 0 24px 60px #55331b20;
-}
-
-.culture-hero-art:before,
-.culture-hero-art:after {
-    content: "";
-    position: absolute;
-    inset: 20px;
-    border: 1px solid #fff2d4aa;
-    border-radius: 48% 48% 4px 4px;
-}
-
-.culture-hero-art:after {
-    inset: 36px;
-    border-style: dashed;
-}
-
-.hero-art-ring {
-    position: absolute;
-    border: 1px solid #8d482c66;
-    border-radius: 50%;
-    width: 230px;
-    height: 230px;
-}
-
-.ring-two {
-    width: 285px;
-    height: 285px;
-    border-style: dashed;
-}
-
-.hero-art-symbol {
-    position: relative;
-    z-index: 1;
-    color: #713820;
-    font: 700 66px Georgia, serif;
-}
-
-.hero-art-caption {
-    position: absolute;
-    bottom: 25px;
-    text-align: center;
-    color: #65351f;
-    font-size: 9px;
-    font-weight: 900;
-    letter-spacing: 2.2px;
-    line-height: 1.7;
-}
-
-/* =========================================
    MAP INTRO
 ========================================= */
 
 .map-intro {
     text-align: center;
-    padding: 22px 20px 18px;
+    padding: 14px 20px 12px;
 }
 
 .map-intro h2 {
@@ -2899,18 +2784,7 @@ body {
     .culture-nav-note {
         display: none;
     }
-
-    .culture-hero {
-        grid-template-columns: 1fr;
-        padding-top: 48px;
-        padding-bottom: 48px;
-    }
-
-    .culture-hero-art {
-        height: 230px;
-    }
-
-    .culture-gateway {
+.culture-gateway {
         padding: 48px 12px 20px;
     }
 
