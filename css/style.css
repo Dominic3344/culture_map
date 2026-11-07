@@ -3340,7 +3340,6 @@ body {
     flex-direction: row !important;
     flex-wrap: nowrap !important;
     align-items: flex-start;
-
     width: max-content;
     min-width: 100%;
     box-sizing: border-box;
@@ -4143,4 +4142,473 @@ body {
         min-height: 190px;
         max-height: 250px;
     }
+}
+/* =========================================================
+   LIVING CULTURE MAP — AUTHENTICATION SYSTEM
+   Login / Signup / User Navigation / My Submissions
+========================================================= */
+
+/* Authentication navigation area */
+#authNavArea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: nowrap;
+}
+
+/* Sign in, sign out and submissions buttons */
+.lcm-auth-nav {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 9px 15px;
+    border: 1px solid #d2b77f;
+    border-radius: 50px;
+    background: #fffaf0;
+    color: #47271b;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.lcm-auth-nav:hover {
+    background: #963d25;
+    color: #fff;
+    border-color: #963d25;
+    transform: translateY(-1px);
+}
+
+.lcm-auth-nav.lcm-logout {
+    background: #f5eee3;
+    color: #963d25;
+}
+
+.lcm-auth-nav.lcm-logout:hover {
+    background: #963d25;
+    color: #fff;
+}
+
+/* Signed-in user information */
+.lcm-user-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 10px 5px 5px;
+    border: 1px solid #dfcba8;
+    border-radius: 50px;
+    background: #fffaf0;
+    color: #47271b;
+    max-width: 180px;
+}
+
+.lcm-user-avatar {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    width: 29px;
+    height: 29px;
+    border-radius: 50%;
+    background: #963d25;
+    color: #fff5df;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.lcm-user-name {
+    max-width: 85px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+.lcm-user-role {
+    padding: 3px 6px;
+    border-radius: 20px;
+    background: #f0e0c4;
+    color: #80502d;
+    font-size: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+/* Authentication popup background */
+#authModal:not([hidden]) {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+}
+
+.lcm-auth-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(25, 14, 9, .72);
+    backdrop-filter: blur(9px);
+    -webkit-backdrop-filter: blur(9px);
+}
+
+/* Login and signup card */
+.lcm-auth-card,
+.lcm-submissions-card {
+    position: relative;
+    width: min(450px, 100%);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 42px 36px 30px;
+    border: 1px solid #d6b16f;
+    border-radius: 25px;
+    background: #fffdfa;
+    color: #25140f;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, .35);
+    text-align: center;
+    animation: lcm-auth-appear .25s ease-out;
+}
+
+@keyframes lcm-auth-appear {
+    from {
+        opacity: 0;
+        transform: translateY(16px) scale(.97);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Decorative emblem */
+.lcm-auth-emblem {
+    display: grid;
+    place-items: center;
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 15px;
+    border-radius: 50%;
+    background: #963d25;
+    color: #ffe6ae;
+    font-size: 33px;
+    box-shadow: 0 5px 16px rgba(150, 61, 37, .22);
+}
+
+/* Authentication heading */
+.lcm-auth-card h2,
+.lcm-submissions-card h2 {
+    margin: 10px 0;
+    color: #47271b;
+    font: 700 29px/1.2 Georgia, serif;
+}
+
+.lcm-auth-subtitle {
+    margin: 0 0 23px;
+    color: #806b59;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* Close button */
+.lcm-auth-close {
+    position: absolute;
+    top: 15px;
+    right: 17px;
+    display: grid;
+    place-items: center;
+    width: 35px;
+    height: 35px;
+    border: 1px solid #e4d7c2;
+    border-radius: 50%;
+    background: #fffaf0;
+    color: #5c3e2e;
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.lcm-auth-close:hover {
+    background: #963d25;
+    border-color: #963d25;
+    color: white;
+    transform: rotate(90deg);
+}
+
+/* Authentication error */
+.lcm-auth-error {
+    margin: 14px 0;
+    padding: 11px 13px;
+    border: 1px solid #f0b8ae;
+    border-radius: 10px;
+    background: #fff0ed;
+    color: #a52f20;
+    font-size: 11px;
+    line-height: 1.6;
+    text-align: left;
+}
+
+/* Login and signup form */
+.lcm-auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 20px;
+    text-align: left;
+}
+
+.lcm-auth-form label {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    color: #47271b;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.lcm-auth-form input {
+    display: block;
+    width: 100%;
+    min-height: 45px;
+    padding: 12px 14px;
+    border: 1px solid #d8c6a8;
+    border-radius: 11px;
+    outline: none;
+    background: #fff;
+    color: #25140f;
+    font-size: 13px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.lcm-auth-form input::placeholder {
+    color: #b4a493;
+    font-size: 12px;
+}
+
+.lcm-auth-form input:focus {
+    border-color: #963d25;
+    box-shadow: 0 0 0 3px rgba(150, 61, 37, .12);
+}
+
+/* Submit button */
+.lcm-auth-submit {
+    width: 100%;
+    min-height: 46px;
+    margin-top: 5px;
+    padding: 12px 18px;
+    border: 1px solid #963d25;
+    border-radius: 12px;
+    background: #963d25;
+    color: white;
+    font-size: 13px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: all .2s ease;
+}
+
+.lcm-auth-submit:hover {
+    background: #71301e;
+    border-color: #71301e;
+    transform: translateY(-1px);
+    box-shadow: 0 7px 18px rgba(150, 61, 37, .2);
+}
+
+.lcm-auth-submit:disabled {
+    opacity: .65;
+    cursor: wait;
+    transform: none;
+}
+
+/* Signup / signin switch */
+.lcm-auth-switch {
+    margin: 20px 0 0;
+    color: #806b59;
+    font-size: 11px;
+}
+
+.lcm-auth-switch button {
+    color: #963d25;
+    font-size: 11px;
+    font-weight: 800;
+    cursor: pointer;
+}
+
+.lcm-auth-switch button:hover {
+    text-decoration: underline;
+}
+
+.lcm-auth-hint {
+    margin: 12px 0;
+    color: #806b59;
+    font-size: 10px;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.lcm-auth-foot {
+    margin-top: 24px;
+    padding-top: 15px;
+    border-top: 1px solid #ebdcc7;
+    color: #9c897a;
+    font-size: 9px;
+    letter-spacing: .5px;
+    line-height: 1.7;
+}
+
+/* =========================================================
+   MY SUBMISSIONS POPUP
+========================================================= */
+
+.lcm-submissions-card {
+    width: min(650px, 100%);
+    text-align: left;
+}
+
+.lcm-submissions-card h2 {
+    margin-top: 12px;
+}
+
+.lcm-submissions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 23px;
+}
+
+.lcm-submission-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 15px;
+    border: 1px solid #e4d7c2;
+    border-radius: 13px;
+    background: #fffaf0;
+}
+
+.lcm-submission-row strong {
+    display: block;
+    color: #47271b;
+    font: 700 15px Georgia, serif;
+}
+
+.lcm-submission-row span {
+    display: block;
+    margin-top: 5px;
+    color: #806b59;
+    font-size: 10px;
+}
+
+.lcm-submission-row p {
+    margin-top: 7px;
+    color: #963d25;
+    font-size: 10px;
+}
+
+.lcm-status-verified,
+.lcm-status-pending,
+.lcm-status-rejected {
+    flex-shrink: 0;
+    padding: 6px 10px;
+    border-radius: 30px;
+    font-size: 9px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.lcm-status-verified {
+    background: #eaf6ed;
+    color: #267440;
+}
+
+.lcm-status-pending {
+    background: #fff3d9;
+    color: #96680b;
+}
+
+.lcm-status-rejected {
+    background: #fff0ed;
+    color: #a52f20;
+}
+
+.lcm-empty-submissions {
+    padding: 30px 15px;
+    border: 1px dashed #d8c6a8;
+    border-radius: 13px;
+    color: #806b59;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* =========================================================
+   RESPONSIVE AUTHENTICATION
+========================================================= */
+
+@media (max-width: 760px) {
+    #authNavArea {
+        gap: 5px;
+    }
+
+    .lcm-auth-nav {
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+
+    .lcm-user-chip {
+        max-width: 125px;
+    }
+
+    .lcm-user-name {
+        max-width: 55px;
+    }
+}
+
+@media (max-width: 480px) {
+    .lcm-auth-backdrop {
+        padding: 12px;
+    }
+
+    .lcm-auth-card,
+    .lcm-submissions-card {
+        padding: 38px 20px 24px;
+        border-radius: 19px;
+    }
+
+    .lcm-auth-card h2,
+    .lcm-submissions-card h2 {
+        font-size: 25px;
+    }
+
+    .lcm-user-role {
+        display: none;
+    }
+
+    .lcm-user-chip {
+        max-width: 90px;
+    }
+
+    .lcm-user-name {
+        max-width: 40px;
+    }
+
+    .lcm-submission-row {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}
+
+/* Fix: prevent the empty authentication modal from blocking the website */
+#authModal:empty {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* Allow interaction when the authentication modal is actually open */
+#authModal:not(:empty) {
+    pointer-events: auto;
 }

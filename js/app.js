@@ -64,6 +64,192 @@
     isModeratorOpen: false
   };
 
+    /* =========================================================
+     AUTHENTICATION
+     ========================================================= */
+
+  var authMode = 'login';
+  var authRequiredRole = 'user';
+  var pendingAuthAction = null;
+
+  function currentUser() {
+    return window.LCMAuth ? window.LCMAuth.getCurrentUser() : null;
+  }
+
+  function updateAuthNav() {
+    var area = $('authNavArea');
+    if (!area) return;
+
+    var user = currentUser();
+
+    if (!user) {
+      area.innerHTML =
+        '<button type="button" data-action="open-auth" ' +
+        'class="px-4 py-2 rounded-full text-xs font-semibold border border-[#d2b77f] text-[#47271b] hover:bg-[#fbf4e8] transition-colors">' +
+        'Log In</button>';
+      return;
+    }
+
+    area.innerHTML =
+      '<div class="flex items-center gap-2">' +
+        '<span class="hidden sm:inline text-xs text-[#705e52]">Hello, ' +
+          esc(user.name) + '</span>' +
+        '<button type="button" data-action="logout" ' +
+        'class="px-4 py-2 rounded-full text-xs font-semibold border border-[#d2b77f] text-[#47271b] hover:bg-[#fbf4e8] transition-colors">' +
+        'Log Out</button>' +
+      '</div>';
+  }
+
+  function openAuth(mode, requiredRole, nextAction) {
+    authMode = mode || 'login';
+    authRequiredRole = requiredRole || 'user';
+    pendingAuthAction = nextAction || null;
+
+    if (authRequiredRole === 'moderator') {
+      authMode = 'login';
+    }
+
+    renderAuthModal();
+  }
+
+  function closeAuthModal() {
+    var root = $('authModal');
+    if (root) root.innerHTML = '';
+  }
+
+  function renderAuthModal() {
+    var root = $('authModal');
+    if (!root) return;
+
+    var isModeratorLogin = authRequiredRole === 'moderator';
+    var isRegister = authMode === 'register' && !isModeratorLogin;
+
+    root.innerHTML =
+      '<div class="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" role="presentation">' +
+        '<section class="lcm-auth-card relative bg-[#fffdfa] w-full max-w-md rounded-3xl border border-[#d6b16f] shadow-2xl p-7" role="dialog" aria-modal="true" aria-label="Account authentication">' +
+
+          '<button type="button" data-action="close-auth" class="absolute top-4 right-4 text-[#806b59] hover:text-[#963d25] text-2xl" aria-label="Close">&times;</button>' +
+
+          '<div class="mb-6">' +
+            '<span class="text-[10px] font-bold tracking-[0.2em] text-[#963d25] uppercase">THE LIVING CULTURE MAP</span>' +
+            '<h2 class="text-2xl font-serif font-bold text-[#47271b] mt-2">' +
+              (isModeratorLogin ? 'Moderator Access' : isRegister ? 'Create Your Account' : 'Welcome Back') +
+            '</h2>' +
+            '<p class="text-sm text-[#806b59] mt-2">' +
+              (isModeratorLogin
+                ? 'Sign in using an authorized moderator or administrator email.'
+                : isRegister
+                  ? 'Create an account to contribute cultural experiences.'
+                  : 'Sign in to contribute and manage your cultural submissions.') +
+            '</p>' +
+          '</div>' +
+
+          '<div id="authError" class="hidden mb-4 p-3 rounded-xl bg-red-50 border border-red-200 text-red-800 text-xs"></div>' +
+
+          '<form id="lcmAuthForm" class="space-y-4">' +
+
+            (isRegister
+              ? '<div>' +
+                  '<label class="block text-xs font-semibold text-[#47271b] mb-1.5">Full Name</label>' +
+                  '<input name="name" type="text" required minlength="2" autocomplete="name" placeholder="Enter your full name" class="w-full p-3 rounded-xl border border-[#e4d7c2] bg-white text-sm text-[#47271b] focus:outline-none focus:border-[#963d25]" />' +
+                '</div>'
+              : '') +
+
+            '<div>' +
+              '<label class="block text-xs font-semibold text-[#47271b] mb-1.5">Email Address</label>' +
+              '<input name="email" type="email" required autocomplete="email" placeholder="you@example.com" class="w-full p-3 rounded-xl border border-[#e4d7c2] bg-white text-sm text-[#47271b] focus:outline-none focus:border-[#963d25]" />' +
+            '</div>' +
+
+            '<div>' +
+              '<label class="block text-xs font-semibold text-[#47271b] mb-1.5">Password</label>' +
+              '<input name="password" type="password" required minlength="' + (isRegister ? '8' : '1') + '" autocomplete="' + (isRegister ? 'new-password' : 'current-password') + '" placeholder="' + (isRegister ? 'At least 8 characters' : 'Enter your password') + '" class="w-full p-3 rounded-xl border border-[#e4d7c2] bg-white text-sm text-[#47271b] focus:outline-none focus:border-[#963d25]" />' +
+            '</div>' +
+
+            '<button type="submit" class="w-full py-3 rounded-xl bg-[#963d25] hover:bg-[#7d321e] text-white text-sm font-semibold transition-colors">' +
+              (isRegister ? 'Create Account' : 'Sign In') +
+            '</button>' +
+          '</form>' +
+
+          (!isModeratorLogin
+            ? '<p class="text-center text-xs text-[#806b59] mt-5">' +
+                (isRegister ? 'Already have an account?' : 'New to The Living Culture Map?') +
+                ' <button type="button" data-action="switch-auth-mode" class="font-bold text-[#963d25] hover:underline">' +
+                  (isRegister ? 'Log In' : 'Create Account') +
+                '</button>' +
+              '</p>'
+            : '') +
+
+        '</section>' +
+      '</div>';
+
+    var backdrop = root.firstElementChild;
+    var card = root.querySelector('.lcm-auth-card');
+
+    if (backdrop && card) {
+      backdrop.addEventListener('click', function (e) {
+        if (e.target === backdrop) closeAuthModal();
+      });
+    }
+
+    var form = $('lcmAuthForm');
+
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      var submitButton = form.querySelector('button[type="submit"]');
+      var errorBox = $('authError');
+      var formValues = new FormData(form);
+
+      var email = formValues.get('email');
+      var password = formValues.get('password');
+      var name = formValues.get('name');
+
+      submitButton.disabled = true;
+      submitButton.textContent = 'Please wait...';
+
+      try {
+        if (isRegister) {
+          await window.LCMAuth.register(name, email, password);
+        } else {
+          await window.LCMAuth.login(
+            email,
+            password,
+            authRequiredRole
+          );
+        }
+
+        var user = currentUser();
+
+        closeAuthModal();
+        updateAuthNav();
+
+        if (user && window.LCMAuth.isModerator(user)) {
+          updateBadges();
+        }
+
+        var next = pendingAuthAction;
+        pendingAuthAction = null;
+
+        if (next === 'contribute') {
+          state.isContributeOpen = true;
+          renderContributionModal();
+        } else if (next === 'moderator') {
+          if (user && window.LCMAuth.isModerator(user)) {
+            state.isModeratorOpen = true;
+            renderAdminModal();
+          }
+        }
+
+      } catch (err) {
+        errorBox.textContent = err.message || 'Authentication failed.';
+        errorBox.classList.remove('hidden');
+
+        submitButton.disabled = false;
+        submitButton.textContent = isRegister ? 'Create Account' : 'Sign In';
+      }
+    });
+  }
+
   function pendingCount() {
     return state.allListings.filter(function (l) { return l.verificationStatus === 'pending'; }).length;
   }
@@ -161,27 +347,71 @@
     }
   }
 
-  function bindMap() {
-    var svg = $('indiaSvg');
-    svg.addEventListener('pointermove', function (e) {
-      var t = e.target.closest ? e.target.closest('path[id^="tryjs"]') : null;
-      if (t) {
-        var title = t.getAttribute('data-title') || t.getAttribute('title') || '';
-        setHovered(title, { x: e.pageX + 15, y: e.pageY + 10 });
-      } else {
-        setHovered(null, null);
-      }
-    });
-    svg.addEventListener('pointerleave', function () { setHovered(null, null); });
-    svg.addEventListener('click', function (e) {
-      var t = e.target.closest ? e.target.closest('path[id^="tryjs"]') : null;
-      if (!t) return;
-      e.preventDefault();
-      handleSelectState(t.getAttribute('data-title'));
-      var journeyEl = $('district-journey');
-      if (journeyEl) journeyEl.scrollIntoView({ behavior: 'smooth' });
-    });
+function bindMap() {
+  var svg = $('indiaSvg');
+
+  if (!svg) {
+    console.error('India map SVG (#indiaSvg) was not found.');
+    return;
   }
+
+  // Find the actual state path under the mouse
+  function getStatePath(target) {
+    if (!target || !target.closest) return null;
+
+    var path = target.closest('#indiaPaths path[data-title]');
+
+    // Make sure the path belongs to this map
+    if (!path || !svg.contains(path)) return null;
+
+    return path;
+  }
+
+  // Mouse movement / hover detection
+  svg.addEventListener('pointermove', function (e) {
+    var path = getStatePath(e.target);
+
+    if (path) {
+      var title = path.getAttribute('data-title');
+
+      setHovered(title, {
+        x: e.pageX + 15,
+        y: e.pageY + 10
+      });
+    } else {
+      setHovered(null, null);
+    }
+  });
+
+  // Clear hover when leaving the map
+  svg.addEventListener('pointerleave', function () {
+    setHovered(null, null);
+  });
+
+  // State selection on click
+  svg.addEventListener('click', function (e) {
+    var path = getStatePath(e.target);
+
+    if (!path) return;
+
+    e.preventDefault();
+
+    var stateName = path.getAttribute('data-title');
+
+    if (!stateName) return;
+
+    handleSelectState(stateName);
+
+    var journeyEl = $('district-journey');
+
+    if (journeyEl) {
+      journeyEl.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+}
 
   /* =========================================================
      DISTRICT TRAIL
@@ -638,6 +868,26 @@ function trailScroll() {
     if (!state.isModeratorOpen) { root.innerHTML = ''; return; }
 
     var listings = state.allListings;
+        var loggedInUser = currentUser();
+
+    if (!loggedInUser || !window.LCMAuth.isModerator(loggedInUser)) {
+      state.isModeratorOpen = false;
+      root.innerHTML = '';
+      return;
+    }
+
+    var adminTools = '';
+
+    if (window.LCMAuth.isAdmin(loggedInUser)) {
+      adminTools =
+        '<div class="mb-6 p-4 rounded-2xl bg-[#fbf5eb] border border-[#e4d7c2]">' +
+          '<h4 class="text-sm font-bold text-[#47271b] mb-1">Administrator Controls</h4>' +
+          '<p class="text-xs text-[#806b59] mb-3">Authorize an email address to access the Moderator Hub.</p>' +
+          '<button type="button" data-action="authorize-moderator" class="px-4 py-2 rounded-lg bg-[#47271b] text-white text-xs font-semibold hover:bg-[#331c13]">' +
+            'Authorize Moderator Email' +
+          '</button>' +
+        '</div>';
+    }
     var pending = listings.filter(function (l) { return l.verificationStatus === 'pending'; });
     var verified = listings.filter(function (l) { return l.verificationStatus === 'verified'; });
     var displayed = admin.activeTab === 'pending' ? pending : admin.activeTab === 'verified' ? verified : listings;
@@ -717,7 +967,7 @@ function trailScroll() {
             '<button data-action="admin-tab" data-tab="verified" class="' + tabCls('verified') + ' flex items-center gap-1.5">' + icon('CheckCircle2', 'w-3.5 h-3.5') + '<span>Verified Traditions (' + verified.length + ')</span></button>' +
             '<button data-action="admin-tab" data-tab="all" class="' + tabCls('all') + '">All Database Entries (' + listings.length + ')</button>' +
           '</div>' +
-          '<div class="overflow-y-auto custom-scrollbar p-6">' + approve + list + '</div>' +
+          '<div class="overflow-y-auto custom-scrollbar p-6">' + adminTools + approve + list + '</div>' +
           '<div class="px-6 py-3 border-t border-[#ebdcc7] bg-[#fbf5eb] flex items-center justify-between text-xs text-[#806b59]">' +
             '<span>Strict Verification Principle: No social scraping; only authenticated community and council records.</span>' +
             '<button data-action="close-moderator" class="px-4 py-1.5 rounded-lg text-xs font-semibold bg-[#47271b] text-white hover:bg-[#331c13]">Close</button>' +
@@ -805,14 +1055,94 @@ function trailScroll() {
     var id = el.getAttribute('data-id');
 
     switch (action) {
-      case 'open-contribute':
-        state.isContributeOpen = true; renderContributionModal(); break;
+            case 'open-contribute': {
+        var contributor = currentUser();
+
+        if (!contributor) {
+          openAuth('login', 'user', 'contribute');
+        } else {
+          state.isContributeOpen = true;
+          renderContributionModal();
+        }
+        break;
+      }
+
       case 'close-contribute':
-        state.isContributeOpen = false; renderContributionModal(); break;
-      case 'open-moderator':
-        state.isModeratorOpen = true; renderAdminModal(); break;
+        state.isContributeOpen = false;
+        renderContributionModal();
+        break;
+
+      case 'open-moderator': {
+        var moderator = currentUser();
+
+        if (!moderator || !window.LCMAuth.isModerator(moderator)) {
+          openAuth('login', 'moderator', 'moderator');
+        } else {
+          state.isModeratorOpen = true;
+          renderAdminModal();
+        }
+        break;
+      }
+
       case 'close-moderator':
-        state.isModeratorOpen = false; renderAdminModal(); break;
+        state.isModeratorOpen = false;
+        renderAdminModal();
+        break;
+
+            case 'open-auth':
+        openAuth('login', 'user', null);
+        break;
+
+      case 'close-auth':
+        closeAuthModal();
+        break;
+
+      case 'switch-auth-mode':
+        authMode = authMode === 'login' ? 'register' : 'login';
+        renderAuthModal();
+        break;
+
+      case 'logout':
+        window.LCMAuth.logout();
+
+        state.isContributeOpen = false;
+        state.isModeratorOpen = false;
+
+        renderContributionModal();
+        renderAdminModal();
+        updateAuthNav();
+
+        break;
+
+      case 'authorize-moderator': {
+        var actor = currentUser();
+
+        if (!actor || !window.LCMAuth.isAdmin(actor)) {
+          alert('Only the administrator can authorize moderators.');
+          break;
+        }
+
+        var moderatorEmail = window.prompt(
+          'Enter the email address to authorize as a moderator:'
+        );
+
+        if (moderatorEmail === null) break;
+
+        try {
+          var authorizedEmail = window.LCMAuth.authorizeModerator(
+            moderatorEmail,
+            actor
+          );
+
+          alert(authorizedEmail + ' is now authorized as a moderator.');
+          renderAdminModal();
+
+        } catch (err) {
+          alert(err.message || 'Could not authorize this moderator.');
+        }
+
+        break;
+      }
       case 'close-listing':
         state.activeModalListing = null; renderListingModal(); break;
       case 'open-listing': {
@@ -918,6 +1248,7 @@ function trailScroll() {
      ========================================================= */
   function init() {
     state.allListings = window.getInitialListings();
+        updateAuthNav();
 
     buildMap();
     bindMap();
