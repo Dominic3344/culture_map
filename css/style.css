@@ -1774,7 +1774,8 @@
 /* ---------------------------------------------------------------------
    2. INTERACTIVE INDIA MAP  (map-style.css)
    --------------------------------------------------------------------- */
-#mapwrapper {
+
+ #mapwrapper{
   font-family: Arial, Helvetica, sans-serif;
   max-width: 1920px;
   margin: 0 auto;
@@ -1922,7 +1923,7 @@ html, body {
   overflow: auto;
   overscroll-behavior: contain;
   -webkit-overflow-scrolling: touch;
-  background: #f7f8fa;
+  background: transparent;
   border-radius: 10px;
   scrollbar-gutter: stable;
 }
@@ -2079,7 +2080,7 @@ body {
 }
 
 #mapwrapper {
-    background: #f8f3e9 !important;
+    background: transparent !important;
 }
 
 /* =========================================
@@ -4611,4 +4612,46 @@ body {
 /* Allow interaction when the authentication modal is actually open */
 #authModal:not(:empty) {
     pointer-events: auto;
+}
+body {
+    background: #ffffff;
+    position: relative;
+}
+
+.artwork-scatter {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.artwork-tile {
+    position: absolute;
+    object-fit: contain;
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+#root,
+#root > .min-h-screen {
+    background-color: transparent !important;
+}
+
+#root {
+    position: relative;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .artwork-tile {
+        width: 150px;
+        height: 150px;
+    }
 }

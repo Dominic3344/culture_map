@@ -34,7 +34,7 @@ var M2 = (() => {
         time: "2:00 PM \u2013 6:30 PM IST",
         artForm: "Temple Percussion & Melam",
         description: "Synchronized traditional acoustic orchestra of 250 master instrumentalists performing traditional Pandi Melam with Chenda, Ilathalam, and Kombu.",
-        image: "https://images.unsplash.com/photo-1599818817639-65126860f38b?auto=format&fit=crop&w=800&q=80",
+        image: "image/Ilanjithara Melam Percussion Ensemble.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Vadakkumnathan+Temple,+Thekkinkadu+Maidan,+Thrissur,+Kerala",
         relatedListingId: "ker-02",
         statusBadge: "Pooram Cycle \xB7 Live Session"
@@ -49,7 +49,7 @@ var M2 = (() => {
         time: "9:30 AM \u2013 1:00 PM IST",
         artForm: "Classical Dance & Theatre",
         description: "Master actors and gurukula students in full facial bhava exercises, mudra training, and live vocal Chenda-Maddalam accompaniment.",
-        image: "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80",
+        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Kerala+Kalamandalam,+Cheruthuruthy,+Thrissur,+Kerala",
         relatedListingId: "ker-03",
         statusBadge: "Open Gurukula Entry"
@@ -64,7 +64,7 @@ var M2 = (() => {
         time: "6:30 PM \u2013 9:30 PM IST",
         artForm: "Classical Dance & Theatre",
         description: "Recognized by UNESCO as Intangible Cultural Heritage: ancient Sanskrit theatre enacting scenes from Bhasa plays with Mizhavu percussion drums.",
-        image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
+        image: "image/Ammannur Koodiyattam Sanskrit Theatre Performance.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Ammannur+Chachu+Chakyar+Smaraka+Gurukulam,+Irinjalakuda,+Thrissur,+Kerala",
         relatedListingId: "ker-04",
         statusBadge: "UNESCO Heritage Recital"
@@ -79,7 +79,7 @@ var M2 = (() => {
         time: "10:00 AM \u2013 4:30 PM IST",
         artForm: "Traditional Craft & Metalwork",
         description: "Living lost-wax casting demonstration where hereditary metal masters pour molten bell-metal alloys to create reverberating Varpu and temple lamps.",
-        image: "https://images.unsplash.com/photo-1584697964190-7bb0db32e65c?auto=format&fit=crop&w=800&q=80",
+        image: "image/Nadavaramba Bronze Uruli Casting & Foundry Demonstration.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Nadavaramba,+Irinjalakuda,+Thrissur,+Kerala",
         relatedListingId: "ker-10",
         statusBadge: "Artisan Workshop Tour"
@@ -96,7 +96,7 @@ var M2 = (() => {
         time: "6:30 PM \u2013 4:00 AM (Overnight) IST",
         artForm: "Ritual Performance",
         description: "Sacred shamanic invocation where the performer transforms into the living deity with blazing torch dances, 30-foot headdress, and roaring Chenda beats.",
-        image: "https://images.unsplash.com/photo-1609137144820-2210a56f7efd?auto=format&fit=crop&w=800&q=80",
+        image: "image/Muchilot Bhagavathi Theyyam & Fire Rite Invocation.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Madayi+Kavu+Temple,+Pazhayangadi,+Kannur,+Kerala",
         relatedListingId: "ker-01",
         statusBadge: "Sacred Kavu Ritual"
@@ -111,7 +111,7 @@ var M2 = (() => {
         time: "5:30 AM \u2013 9:30 AM & 5:00 PM \u2013 8:30 PM IST",
         artForm: "Ritual Performance",
         description: "Traditional folk deity ritual offering Payankutti, roasted fish, and toddy in an egalitarian shrine open to all communities without caste restrictions.",
-        image: "https://images.unsplash.com/photo-1599818817639-65126860f38b?auto=format&fit=crop&w=800&q=80",
+        image: "image/Parassini Madappura Muthappan Vellattam Serenade.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Parassini+Madappura+Muthappan+Temple,+Anthoor,+Kannur,+Kerala",
         relatedListingId: "ker-01",
         statusBadge: "Daily Living Rite"
@@ -126,7 +126,7 @@ var M2 = (() => {
         time: "9:00 AM \u2013 5:00 PM IST",
         artForm: "Handloom & Textile",
         description: "Watch master handloom weavers craft pure cotton textiles, jacquard motifs, and natural dyed furnishings on traditional foot-treadle pit looms.",
-        image: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80",
+        image: "image/Kannur Handloom Wooden Pit Loom Weaving Guild Tour.jpg.jpeg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Payyambalam,+Kannur,+Kerala",
         relatedListingId: "ker-13",
         statusBadge: "Guild Workshop"
@@ -143,7 +143,7 @@ var M2 = (() => {
         time: "10:00 AM \u2013 1:00 PM & 2:30 PM \u2013 5:00 PM IST",
         artForm: "Traditional Craft & Metalwork",
         description: "Witness the rare front-surface reflective bronze metallurgy perfected by a single hereditary artisan family without modern glass backings.",
-        image: "https://images.unsplash.com/photo-1584697964190-7bb0db32e65c?auto=format&fit=crop&w=800&q=80",
+        image: "image/Aranmula Metal Mirror.jpeg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Aranmula+Parthasarathy+Temple,+Aranmula,+Kerala",
         relatedListingId: "ker-05",
         statusBadge: "GI Certified Craft Guild"
@@ -158,7 +158,7 @@ var M2 = (() => {
         time: "4:30 PM \u2013 6:45 PM IST",
         artForm: "Traditional Craft & Metalwork",
         description: "110 synchronized oarsmen row 100-foot-long snake boats across the backwaters to rhythmic Vanchipattu chants and cadence whistles.",
-        image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+        image: "image/Chundan Vallam Snake Boat Trial Rowing & Vanchipattu Singing.jpg.jpeg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Punnamada+Finishing+Point,+Alappuzha,+Kerala",
         relatedListingId: "ker-06",
         statusBadge: "Live Backwater Regatta"
@@ -173,7 +173,7 @@ var M2 = (() => {
         time: "8:30 AM \u2013 12:30 PM IST",
         artForm: "Handloom & Textile",
         description: "Learn the ecological six-month bio-retting of coconut husks in tidal saline lagoons and see manual two-ply yarn spinning by coastal women artisans.",
-        image: "https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=800&q=80",
+        image: "image/Traditional Coir Water-Retting & Organic Yarn Spinning Walk.jpg.jpeg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Kavalam,+Kuttanad,+Alappuzha,+Kerala",
         relatedListingId: "ker-07",
         statusBadge: "Community Village Tour"
@@ -190,7 +190,7 @@ var M2 = (() => {
         time: "9:00 AM \u2013 5:30 PM IST",
         artForm: "Traditional Craft & Metalwork",
         description: "Observe master shipwrights constructing ocean-going teak dhows up to 200 feet in length entirely by hand without blueprints or CAD designs.",
-        image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=800&q=80",
+        image: "image/Beypore Uru Shipbuilding.jpeg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Beypore+Port,+Beypore,+Kozhikode,+Kerala",
         relatedListingId: "ker-08",
         statusBadge: "Maritime Heritage Dock"
@@ -205,7 +205,7 @@ var M2 = (() => {
         time: "6:30 AM \u2013 8:45 AM & 5:00 PM \u2013 7:30 PM IST",
         artForm: "Martial Arts & Kalari",
         description: "Ancient martial training inside the red-earth pit: high leaps, Urumi flexible swords, staff sparring, and Ayurvedic Marma healing lore.",
-        image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+        image: "image/Kalari Northern Style Kalaripayattu Combat Showcase.jpg.jpeg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=CVN+Kalari,+East+Hill,+Kozhikode,+Kerala",
         relatedListingId: "ker-09",
         statusBadge: "Sacred Pit Demonstration"
@@ -220,7 +220,7 @@ var M2 = (() => {
         time: "7:30 PM \u2013 11:30 PM IST",
         artForm: "Ritual Performance",
         description: "Ethnic tribal ritual theatre honoring Mother Earth and heroic ancestors with blazing resin fire torches and martial acrobatic leaps.",
-        image: "https://images.unsplash.com/photo-1609137144820-2210a56f7efd?auto=format&fit=crop&w=800&q=80",
+        image: "image/thirayattam.jpg.jpeg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Feroke,+Kozhikode,+Kerala",
         relatedListingId: "ker-12",
         statusBadge: "Sacred Grove Night"
@@ -237,7 +237,7 @@ var M2 = (() => {
         time: "9:00 PM \u2013 4:00 AM (Overnight) IST",
         artForm: "Folk Theatre & Puppetry",
         description: "Shadow puppetry performed behind a 42-foot white canvas screen lit by 21 coconut-oil half-shells, narrating ancient Kamba Ramayana verses in Tamil-Malayalam.",
-        image: "https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80",
+        image: "image/Tolpava Koothu  Overnight Ramayana Shadow Leather Puppetry.jpg.jpeg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Koonathara,+Shoranur,+Palakkad,+Kerala",
         relatedListingId: "ker-11",
         statusBadge: "Shadow Puppet Screen"
@@ -252,7 +252,7 @@ var M2 = (() => {
         time: "4:30 PM \u2013 9:00 PM IST",
         artForm: "Classical Dance & Theatre",
         description: "Non-stop classical Carnatic music recital where veteran maestris and young prodigies perform without competitive pressure in honor of Chembai Vaidyanatha Bhagavatar.",
-        image: "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?auto=format&fit=crop&w=800&q=80",
+        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Chembai+Parameswara+Bhagavatar+Memorial,+Kottayi,+Palakkad,+Kerala",
         relatedListingId: "ker-16",
         statusBadge: "Carnatic Sabha Gathering"
@@ -267,7 +267,7 @@ var M2 = (() => {
         time: "3:00 PM \u2013 7:30 PM IST",
         artForm: "Ritual Performance",
         description: "Vibrant ritual dance carrying sculpted peacock and flower kavadis balanced on shoulders, synchronized with Thavil, Chenda, and Nadaswaram crescendos.",
-        image: "https://images.unsplash.com/photo-1599818817639-65126860f38b?auto=format&fit=crop&w=800&q=80",
+        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Chittur,+Palakkad,+Kerala",
         statusBadge: "Folk Rhythm Gathering"
       }
@@ -283,7 +283,7 @@ var M2 = (() => {
         time: "9:30 AM \u2013 1:30 PM IST",
         artForm: "Martial Arts & Kalari",
         description: "Traditional bamboo bow and poisoned-tip replica archery demonstrations with tribal herbal medicine identification guided by Kurichiya clan elders.",
-        image: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
+        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Thirunelly+Temple,+Wayanad,+Kerala",
         relatedListingId: "ker-17",
         statusBadge: "Indigenous Clan Event"
@@ -298,7 +298,7 @@ var M2 = (() => {
         time: "8:30 AM \u2013 3:30 PM IST",
         artForm: "Heritage Site",
         description: "Explore Stone Age petroglyphs and human-animal pictorial glyphs carved onto prehistoric split granite rock faces overlooking the Western Ghats.",
-        image: "https://images.unsplash.com/photo-1582738411706-bfc8e691d1c2?auto=format&fit=crop&w=800&q=80",
+        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Edakkal+Caves,+Nenmeni,+Wayanad,+Kerala",
         statusBadge: "Neolithic Rock Art Walk"
       }
@@ -314,7 +314,7 @@ var M2 = (() => {
         time: "9:30 PM \u2013 4:00 AM (Overnight) IST",
         artForm: "Ritual Performance",
         description: "Towering areca-palm leaf masks (Kolams) painted with natural vermilion and charcoal, worn in trance-inducing ritual theatre to the thundering Thappu drums.",
-        image: "https://images.unsplash.com/photo-1609137144820-2210a56f7efd?auto=format&fit=crop&w=800&q=80",
+        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Kadammanitta+Devi+Temple,+Pathanamthitta,+Kerala",
         relatedListingId: "ker-14",
         statusBadge: "Kolam Mask Ritual"
@@ -329,7 +329,7 @@ var M2 = (() => {
         time: "11:30 AM \u2013 2:30 PM IST",
         artForm: "Temple Festival",
         description: "Historic mass feast featuring 64 distinct vegetarian delicacies served on banana leaves, requested by oarsmen through rhythmic poetic songs.",
-        image: "https://images.unsplash.com/photo-1593693397690-362cb9666fc2?auto=format&fit=crop&w=800&q=80",
+        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Aranmula+Parthasarathy+Temple,+Pathanamthitta,+Kerala",
         relatedListingId: "ker-05",
         statusBadge: "64-Course Feast Experience"
