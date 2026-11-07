@@ -194,8 +194,8 @@
     var s = state.selectedState;
     $('journeyTitle').textContent = s + ' — follow the cultural trail';
     $('journeyDescription').textContent =
-      'Scroll down to follow the dotted route through featured districts of ' + s +
-      '. Click any destination to open its cultural gateway, view scheduled activities with timings, and get instant Google Maps directions.';
+  'Explore featured districts of ' + s +
+  '. Scroll horizontally through the destinations and watch the journey pointer travel along the cultural trail. Click any destination to explore its cultural gateway.';
     $('journeyStateLabel').textContent = 'INDIA · ' + s.toUpperCase();
   }
 
@@ -209,25 +209,59 @@
     }).join('');
   }
 
-  function trailScroll() {
-    var track = $('districtJourneyTrack'), stage = $('districtJourneyStage');
-    var path = $('journeyRoutePath'), pointer = $('journeyPointer');
-    if (!track || !stage || !path || !pointer) return;
-    var districts = currentDistricts();
-    var travel = Math.max(1, track.offsetHeight - stage.offsetHeight);
-    var rect = track.getBoundingClientRect();
-    var progress = Math.max(0, Math.min(1, -rect.top / travel));
-    var len = path.getTotalLength();
-    var pt = path.getPointAtLength(len * progress);
-    pointer.setAttribute('transform', 'translate(' + pt.x + ' ' + (pt.y - 8) + ')');
-    if (districts.length > 1) {
-      var next = Math.min(districts.length - 1, Math.round(progress * (districts.length - 1)));
-      if (next !== activeStopIndex) {
-        activeStopIndex = next;
-        updateTrailStops();
-      }
+  
+
+
+function trailScroll() {
+  var track = $('districtJourneyTrack');
+  var stage = $('districtJourneyStage');
+  var path = $('journeyRoutePath');
+  var pointer = $('journeyPointer');
+  var scroller = $('journeyStopScroller');
+
+  if (!track || !stage || !path || !pointer || !scroller) return;
+
+  var districts = currentDistricts();
+
+  // Calculate vertical scroll progress
+  var travel = Math.max(1, track.offsetHeight - stage.offsetHeight);
+  var rect = track.getBoundingClientRect();
+
+  var progress = Math.max(
+    0,
+    Math.min(1, -rect.top / travel)
+  );
+
+  // 1. Move the journey pointer along the dotted route
+  var pathLength = path.getTotalLength();
+  var point = path.getPointAtLength(pathLength * progress);
+
+  pointer.setAttribute(
+    'transform',
+    'translate(' + point.x + ' ' + (point.y - 8) + ')'
+  );
+
+  // 2. Move destination cards horizontally using vertical scroll
+  var maxScroll = scroller.scrollWidth - scroller.clientWidth;
+
+  scroller.scrollLeft = maxScroll * progress;
+
+  // 3. Synchronize the active destination
+  if (districts.length > 1) {
+    var nextIndex = Math.min(
+      districts.length - 1,
+      Math.round(progress * (districts.length - 1))
+    );
+
+    if (nextIndex !== activeStopIndex) {
+      activeStopIndex = nextIndex;
+      updateTrailStops();
     }
   }
+}
+
+
+
 
   /* =========================================================
      CULTURAL GATEWAY
@@ -902,9 +936,20 @@
       if (event.key === 'Escape') closeGatewayEventModal();
     });
 
-    window.addEventListener('scroll', trailScroll, { passive: true });
-    trailScroll();
-    bindGatewayScroll();
+   // Horizontal district scrolling controls the journey pointer
+// Vertical page scrolling controls the journey pointer
+window.addEventListener(
+  'scroll',
+  trailScroll,
+  { passive: true }
+);
+
+// Recalculate when screen size changes
+window.addEventListener('resize', trailScroll);
+
+trailScroll();
+
+bindGatewayScroll();
   }
 
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);

@@ -3066,14 +3066,14 @@ body {
   font-size:13px;
   line-height:1.8;
 }
-.district-journey-track{
-  position:relative;
-  height:145vh;
-  min-height:850px;
+.district-journey-track {
+  position: relative;
+  height: 145vh;
+  min-height: 850px;
 }
 .district-journey-stage{
-  position:sticky;
-  top:13vh;
+   position: sticky;
+  top: 13vh; 
   min-height:470px;
   padding:clamp(20px,3.4vw,42px);
   overflow:hidden;
@@ -3128,7 +3128,9 @@ body {
   scrollbar-width:thin;
   scrollbar-color:#bd9664 transparent;
   overscroll-behavior-x:contain;
-  scroll-snap-type:x proximity;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+
 }
 .journey-stop-list{display:flex;align-items:stretch;gap:12px;width:max-content;min-width:100%}
 .journey-stop{
@@ -3162,8 +3164,18 @@ body {
 @keyframes journey-nudge{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
 @media(max-width:760px){
   .district-journey{padding:42px 12px 12px}
-  .district-journey-track{height:135vh;min-height:760px}
-  .district-journey-stage{top:11vh;min-height:440px;padding:20px 15px;border-radius:14px}
+  .district-journey-track {
+  height: auto;
+  min-height: 0;
+}
+
+.district-journey-stage {
+  position: relative;
+  top: auto;
+  min-height: 440px;
+  padding: 20px 15px;
+  border-radius: 14px;
+}
   .journey-route-wrap{height:130px;margin:15px 0 8px}
   .journey-stop{flex-basis:155px;min-height:72px}
   .journey-stop-name{font-size:15px}
