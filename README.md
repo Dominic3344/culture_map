@@ -98,7 +98,7 @@ The platform follows a modular frontend architecture.
 **1. Clone the repository**
 
 ```bash
-git clone YOUR_GITHUB_REPOSITORY_URL
+git clone [YOUR_GITHUB_REPOSITORY_URL](https://github.com/Dominic3344/culture_map.git)
 ```
 
 **2. Open the project folder**
@@ -113,7 +113,7 @@ Open the folder in Visual Studio Code.
 
 **4. Run the website**
 
- open `index.html` using Live Server or a local web server.
+ Open `index.html` using Live Server or a local web server.
 
 Alternatively, use:
 
