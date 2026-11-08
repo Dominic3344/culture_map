@@ -113,7 +113,7 @@ Open the folder in Visual Studio Code.
 
 **4. Run the website**
 
-If the project uses plain HTML, CSS, and JavaScript, open `index.html` using Live Server or a local web server.
+ open `index.html` using Live Server or a local web server.
 
 Alternatively, use:
 
@@ -131,14 +131,6 @@ http://localhost:8000
 
 The current frontend prototype does not require mandatory environment variables.
 
-If external services or backend integrations are added later, configuration values should be stored securely using environment variables.
-
-Example:
-
-```env
-MAPS_API_KEY=your_api_key
-BACKEND_API_URL=your_backend_url
-```
 
 Do not commit API keys, passwords, webhook URLs, or other secrets to GitHub.
 
