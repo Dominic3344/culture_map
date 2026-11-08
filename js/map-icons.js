@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // KARNATAKA PALACE ICON
     const karnataka = document.getElementById("tryjs21");
 
-    if (karnataka) {
+if (karnataka) {
 
         const box = karnataka.getBBox();
 
@@ -49,48 +49,16 @@ document.addEventListener("DOMContentLoaded", function () {
         palace.setAttribute("width", "80");
         palace.setAttribute("height", "80");
 
-        palace.innerHTML = `
+    palace.innerHTML = `
             <div xmlns="http://www.w3.org/1999/xhtml"
-                 class="karnataka-icon-wrapper">
-                <img src="image/karnataka-palace.svg"
-                     class="karnataka-palace"
-                     alt="Karnataka palace">
-            </div>
-        `;
-
-        map.appendChild(palace);
-    }
-
-
-// MAHARASHTRA ICON
-const maharashtra = document.getElementById("tryjs18");
-
-if (maharashtra) {
-
-    const box = maharashtra.getBBox();
-
-    const icon = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "foreignObject"
-    );
-
-    icon.setAttribute("id", "maharashtra-icon-container");
-    icon.setAttribute("data-state-id", "tryjs18");
-    icon.setAttribute("x", box.x + box.width / 2 - 40);
-    icon.setAttribute("y", box.y + box.height / 2 - 40);
-    icon.setAttribute("width", "80");
-    icon.setAttribute("height", "80");
-
-    icon.innerHTML = `
-        <div xmlns="http://www.w3.org/1999/xhtml"
-             class="maharashtra-icon-wrapper">
-            <img src="image/maharashtra.svg"
-                 class="maharashtra-icon"
-                 alt="Maharashtra Gateway of India">
+             class="karnataka-icon-wrapper">
+            <img src="image/karnataka-palace.svg"
+                 class="karnataka-palace"
+                 alt="Karnataka palace">
         </div>
     `;
 
-    map.appendChild(icon);
+    map.appendChild(palace);
 }
 // PUNJAB ICON
 const punjab = document.getElementById("tryjs11");
@@ -392,36 +360,6 @@ if (uttarakhand) {
 
     map.appendChild(icon);
 }
-// ANDHRA PRADESH ICON
-const andhraPradesh = document.getElementById("tryjs36");
-
-if (andhraPradesh) {
-
-    const box = andhraPradesh.getBBox();
-
-    const icon = document.createElementNS(
-        "http://www.w3.org/2000/svg",
-        "foreignObject"
-    );
-
-    icon.setAttribute("id", "andhra-pradesh-icon-container");
-    icon.setAttribute("data-state-id", "tryjs36");
-    icon.setAttribute("x", box.x + box.width / 2 - 40);
-    icon.setAttribute("y", box.y + box.height / 2 - 40);
-    icon.setAttribute("width", "80");
-    icon.setAttribute("height", "80");
-
-    icon.innerHTML = `
-        <div xmlns="http://www.w3.org/1999/xhtml"
-             class="andhra-pradesh-icon-wrapper">
-            <img src="image/andhra-pradesh.svg"
-                 class="andhra-pradesh-icon"
-                 alt="Andhra Pradesh architecture">
-        </div>
-    `;
-
-    map.appendChild(icon);
-}
 // RAJASTHAN ICON
 const rajasthan = document.getElementById("tryjs9");
 
@@ -693,5 +631,81 @@ if (arunachalPradesh) {
 
     map.appendChild(icon);
 }
+// MAHARASHTRA ICON
+const maharashtra = document.getElementById("tryjs18");
 
+if (maharashtra) {
+
+    const box = maharashtra.getBBox();
+
+    const icon = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "foreignObject"
+    );
+
+    icon.setAttribute("id", "maharashtra-icon-container");
+    icon.setAttribute("data-state-id", "tryjs18");
+
+    icon.setAttribute("x", box.x + box.width / 2 - 40);
+    icon.setAttribute("y", box.y + box.height / 2 - 40);
+
+    icon.setAttribute("width", "80");
+    icon.setAttribute("height", "80");
+
+    icon.innerHTML = `
+        <div xmlns="http://www.w3.org/1999/xhtml"
+             class="maharashtra-icon-wrapper">
+
+            <img src="image/maharashtra.svg"
+            class="maharashtra-icon"
+            alt="Gateway of India">
+
+        </div>
+    `;
+
+    map.appendChild(icon);
+}
+// ANDHRA PRADESH ICON
+
+const andhraPradesh = map.querySelector("#tryjs36");
+
+if (andhraPradesh) {
+    const bbox = andhraPradesh.getBBox();
+
+    const foreignObject = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "foreignObject"
+    );
+
+    // ICON SIZE
+    const iconSize = 60;
+
+    // POSITION ADJUSTMENTS
+    const offsetX = 0;
+    const offsetY = 0;
+
+    foreignObject.setAttribute(
+        "x",
+        bbox.x + (bbox.width - iconSize) / 2 + offsetX
+    );
+
+    foreignObject.setAttribute(
+        "y",
+        bbox.y + (bbox.height - iconSize) / 2 + offsetY
+    );
+
+    foreignObject.setAttribute("width", iconSize);
+    foreignObject.setAttribute("height", iconSize);
+
+    foreignObject.innerHTML = `
+        <div xmlns="http://www.w3.org/1999/xhtml"
+             class="andhra-pradesh-icon-wrapper">
+            <img src="image/andhra-pradesh.svg"
+                 class="andhra-pradesh-icon"
+                 alt="">
+        </div>
+    `;
+
+    map.appendChild(foreignObject);
+}
 });
