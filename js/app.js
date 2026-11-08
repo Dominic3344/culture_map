@@ -1198,7 +1198,19 @@ function trailScroll() {
           }
         }
         var target = match || all[0];
-        if (target) { state.activeModalListing = target; renderListingModal(); }
+
+        if (target) {
+          // Use the same image displayed on the gateway event card
+          var storyListing = Object.assign({}, target);
+
+          if (evt && evt.image) {
+            storyListing.imageUrl = evt.image;
+          }
+
+          state.activeModalListing = storyListing;
+          renderListingModal();
+        }
+
         break;
       }
       case 'admin-tab':

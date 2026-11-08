@@ -40,7 +40,7 @@ var M3 = (() => {
       contactEmailOrPhone: "info@kannurtheyyamtrust.org",
       sourceUrl: "https://keralatourism.org/theyyamcalendar",
       socialMediaUrl: "https://instagram.com/theyyam_heritage_kannur",
-      imageUrl: "https://images.unsplash.com/photo-1609137144820-2210a56f7efd?auto=format&fit=crop&w=900&q=80",
+      imageUrl: "image/Ilanjithara Melam Percussion Ensemble.jpg",
       verificationStatus: "verified",
       verifiedBy: "Kerala Folklore Academy & North Malabar Cultural Heritage Council",
       verificationDate: "2025-01-14",
