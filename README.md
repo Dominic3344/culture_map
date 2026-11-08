@@ -98,7 +98,7 @@ The platform follows a modular frontend architecture.
 **1. Clone the repository**
 
 ```bash
-git clone [YOUR_GITHUB_REPOSITORY_URL](https://github.com/Dominic3344/culture_map.git)
+git clone https://github.com/Dominic3344/culture_map.git
 ```
 
 **2. Open the project folder**
