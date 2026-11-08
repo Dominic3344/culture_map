@@ -538,6 +538,11 @@ function trailScroll() {
           '</button>' +
         '</article>';
     }).join('');
+    var cards = document.getElementById('gatewayCards');
+
+if (cards) {
+    cards.style.transform = 'translate3d(0, 0, 0)';
+}
   }
 
   /* =========================================================
@@ -586,38 +591,103 @@ function trailScroll() {
       });
     }
   }
+  function updateGatewayCardsPosition(progress) {
+    var cards = document.getElementById('gatewayCards');
+    var viewport = document.getElementById('gatewayCardsScroll');
+
+    if (!cards || !viewport) return;
+
+    var maxTravel = Math.max(
+        0,
+        cards.scrollWidth - viewport.clientWidth
+    );
+
+    var position = maxTravel * progress;
+
+    cards.style.transform =
+        'translate3d(' + (-position) + 'px, 0, 0)';
+}
 
   function bindGatewayScroll() {
     var ticking = false;
+
     function onScroll() {
-      var track = $('gatewayScrollTrack'), stage = $('gatewayStage');
-      if (!track || !stage) return;
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function () {
-        var rect = track.getBoundingClientRect();
-        var travel = Math.max(1, track.offsetHeight - stage.offsetHeight);
-        var progress = Math.max(0, Math.min(1, -rect.top / travel));
+        var track = $('gatewayScrollTrack');
+        var stage = $('gatewayStage');
 
-        var wasClosed = doorProgress < 0.2;
-        doorProgress = progress;
-        if (wasClosed !== (progress < 0.2)) updateGatewaySubheading();
+        if (!track || !stage) return;
+        if (ticking) return;
 
-        stage.style.setProperty('--door-progress', progress.toFixed(3));
-        stage.style.setProperty('--left-shift', (-progress * 103) + '%');
-        stage.style.setProperty('--right-shift', (progress * 103) + '%');
-        stage.style.setProperty('--left-angle', (-progress * 12) + 'deg');
-        stage.style.setProperty('--right-angle', (progress * 12) + 'deg');
+        ticking = true;
 
-        if (progress > 0.42) stage.classList.add('content-visible');
-        else stage.classList.remove('content-visible');
+        requestAnimationFrame(function () {
+            var rect = track.getBoundingClientRect();
 
-        ticking = false;
-      });
+            var travel = Math.max(
+                1,
+                track.offsetHeight - stage.offsetHeight
+            );
+
+            var progress = Math.max(
+                0,
+                Math.min(1, -rect.top / travel)
+            );
+
+            // Move cards horizontally with vertical page scroll
+            updateGatewayCardsPosition(progress);
+
+            // Preserve existing temple door animation
+            var wasClosed = doorProgress < 0.2;
+
+            doorProgress = progress;
+
+            if (wasClosed !== (progress < 0.2)) {
+                updateGatewaySubheading();
+            }
+
+            stage.style.setProperty(
+                '--door-progress',
+                progress.toFixed(3)
+            );
+
+            stage.style.setProperty(
+                '--left-shift',
+                (-progress * 103) + '%'
+            );
+
+            stage.style.setProperty(
+                '--right-shift',
+                (progress * 103) + '%'
+            );
+
+            stage.style.setProperty(
+                '--left-angle',
+                (-progress * 12) + 'deg'
+            );
+
+            stage.style.setProperty(
+                '--right-angle',
+                (progress * 12) + 'deg'
+            );
+
+            if (progress > 0.42) {
+                stage.classList.add('content-visible');
+            } else {
+                stage.classList.remove('content-visible');
+            }
+
+            ticking = false;
+        });
     }
-    window.addEventListener('scroll', onScroll, { passive: true });
+
+    window.addEventListener('scroll', onScroll, {
+        passive: true
+    });
+
+    window.addEventListener('resize', onScroll);
+
     onScroll();
-  }
+}
 
   /* =========================================================
      CULTURAL DIRECTORY
@@ -1291,6 +1361,7 @@ window.addEventListener(
 window.addEventListener('resize', trailScroll);
 
 trailScroll();
+
 
 bindGatewayScroll();
   }

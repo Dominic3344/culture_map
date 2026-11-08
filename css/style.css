@@ -2195,7 +2195,7 @@ body {
 ========================================= */
 
 .gateway-scroll-track {
-    height: 190vh;
+    height: 160vh;
     position: relative;
 }
 
@@ -2317,11 +2317,17 @@ body {
 ========================================= */
 
 .gateway-cards {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    align-items: start;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+
+    width: max-content;
+    min-width: 100%;
+
     column-gap: 24px;
-    row-gap: 76px;
+    row-gap: 0;
+
     padding: 8px 8px 92px;
     overflow: visible;
 }
@@ -4675,4 +4681,129 @@ body {
     width: 455px !important;
     object-fit: cover !important;
     object-position: center;
+}
+
+/* =====================================
+   CULTURAL GATEWAY – CARD DIMENSIONS
+   ===================================== */
+
+.gateway-card {
+    width: 246px !important;
+    min-width: 246px !important;
+    height: 409px !important;
+    min-height: 409px !important;
+    flex: 0 0 246px !important;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Image dimensions */
+.gateway-card-img {
+    display: block !important;
+    width: 100% !important;
+    height: 327px !important;
+    min-height: 327px !important;
+    max-height: 327px !important;
+    object-fit: cover !important;
+    object-position: center;
+    flex-shrink: 0;
+}
+
+/* Image wrapper, if present */
+.gateway-card-image {
+    width: 100% !important;
+    height: 327px !important;
+    min-height: 327px !important;
+    max-height: 327px !important;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+/* Cultural Gateway horizontal card movement */
+
+#gatewayCardsScroll {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    scrollbar-width: none;
+}
+
+#gatewayCardsScroll::-webkit-scrollbar {
+    display: none;
+}
+
+#gatewayCards {
+    display: flex;
+    flex-wrap: nowrap;
+    width: max-content;
+    gap: 20px;
+    overflow: visible;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
+
+#gatewayCards .gateway-card {
+    flex: 0 0 246px;
+    width: 246px;
+    height: 409px;
+}
+/* Horizontal card viewport controlled by page scrolling */
+
+#gatewayCardsScroll {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    scrollbar-width: none;
+}
+
+#gatewayCardsScroll::-webkit-scrollbar {
+    display: none;
+}
+
+#gatewayCards {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    width: max-content;
+    min-width: 100%;
+    gap: 24px;
+    overflow: visible;
+    will-change: transform;
+    transform: translate3d(0, 0, 0);
+}
+
+#gatewayCards .gateway-card {
+    flex: 0 0 246px;
+    width: 246px;
+    height: 409px;
+    box-sizing: border-box;
+}
+
+#gatewayCards .gateway-card-image {
+    height: 327px;
+}
+
+/* Prevent gateway cards from trapping pointer scrolling */
+
+#gatewayCardsScroll {
+    overflow: hidden !important;
+    overscroll-behavior: auto !important;
+    touch-action: pan-y;
+}
+
+#gatewayCards {
+    pointer-events: auto;
+}
+
+#gatewayCards .gateway-card {
+    overscroll-behavior: auto;
+}
+
+/* Keep hover details interactive without trapping scrolling */
+#gatewayCards .gateway-card-data {
+    overscroll-behavior: auto;
 }
