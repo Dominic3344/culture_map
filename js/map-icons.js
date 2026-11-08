@@ -708,4 +708,45 @@ if (andhraPradesh) {
 
     map.appendChild(foreignObject);
 }
+// JAMMU & KASHMIR MOUNTAIN ICON
+
+const jammuKashmir = map.querySelector("#tryjs1");
+
+if (jammuKashmir) {
+
+    const bbox = jammuKashmir.getBBox();
+
+    const icon = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "foreignObject"
+    );
+
+    const iconSize = 60;
+
+    icon.setAttribute(
+        "x",
+        bbox.x + (bbox.width - iconSize) / 2
+    );
+
+    icon.setAttribute(
+        "y",
+        bbox.y + (bbox.height - iconSize) / 2
+    );
+
+    icon.setAttribute("width", iconSize);
+    icon.setAttribute("height", iconSize);
+
+    icon.innerHTML = `
+        <div xmlns="http://www.w3.org/1999/xhtml"
+             style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;">
+
+            <img src="image/mountain_icon.svg"
+                 style="width:55px;height:55px;object-fit:contain;"
+                 alt="">
+
+        </div>
+    `;
+
+    map.appendChild(icon);
+}
 });
