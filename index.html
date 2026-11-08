@@ -28,8 +28,10 @@
       <div class="min-h-screen bg-[#f8f3e9] text-[#25140f] flex flex-col font-sans selection:bg-[#e7b75e] selection:text-[#25140f]">
         <header class="culture-nav">
           <a class="culture-brand" href="#top">
-            <span class="culture-mark">✺</span>
-            <span>THE LIVING CULTURE MAP</span>
+            <span class="culture-mark">
+    <img src="image/logo.avif" alt="Living Culture Map Logo">
+</span>
+            <span>CULTURAL TRAILS</span>
           </a>
           <nav class="hidden md:flex items-center gap-6 text-sm font-medium">
             <a href="#mapwrapper" class="hover:text-[#963d25] transition-colors">Explore India</a>
@@ -876,72 +878,61 @@
 const artworkTiles = [
 
     // ===== ROW 1 =====
-    { id: 1, image: "image/culture-artwork-tile.jpg", left: "8%", top: 300, size: 230, rotate: -3 },
-    { id: 2, image: "image/culture-artwork-tile.jpg", left: "78%", top: 390, size: 230, rotate: 2 },
-    { id: 3, image: "image/culture-artwork-tile.jpg", left: "40%", top: 250, size: 230, rotate: -1 },
+    { id: 1, image: "image/kashmir.png", left: "-4%", top: 430, size: 330, rotate: -3 },
+    { id: 2, image: "image/women.png", left: "76%", top: 360, size: 400, rotate: 2 },
+    { id: 3, image: "image/stickplay.png", left: "44%", top: 220, size: 450, rotate: -1 },
+    { id: 4, image: "image/dancer.png", left: "3%", top: 960, size: 320, rotate: 2 },
+    //{ id: 5, image: "image/flower-seller.png", left: "82%", top: 230, size: 230, rotate: -2 },
 
     // ===== ROW 2 =====
-    { id: 4, image: "image/culture-artwork-tile.jpg", left: "12%", top: 940, size: 230, rotate: 2 },
-    { id: 5, image: "image/culture-artwork-tile.jpg", left: "76%", top: 1080, size: 230, rotate: -2 },
-    { id: 6, image: "image/culture-artwork-tile.jpg", left: "43%", top: 1660, size: 230, rotate: 3 },
+   // { id: 6, image: "image/women with pot.png", left: "2%", top: 850, size: 230, rotate: 3 },
+  { id: 7, image: "image/flower-seller.png", left: "47%", top: 1020, size: 330, rotate: -2 },
+    { id: 8, image: "image/musician.png", left: "68%", top: 800, size: 300, rotate: 1 },
+  //  { id: 9, image: "image/kashmir.png", left: "62%", top: 900, size: 230, rotate: -3 },
+    { id: 10, image: "image/women with pot.png", left: "78%", top: 1150, size: 330, rotate: 2 },
 
     // ===== ROW 3 =====
-    { id: 7, image: "image/culture-artwork-tile.jpg", left: "5%", top: 1550, size: 230, rotate: -2 },
-    { id: 8, image: "image/culture-artwork-tile.jpg", left: "68%", top: 1690, size: 230, rotate: 1 },
-    { id: 9, image: "image/culture-artwork-tile.jpg", left: "34%", top: 1900, size: 230, rotate: -3 },
+   { id: 11, image: "image/kashmir.png", left: "-2%", top: 1500, size: 130, rotate: -1 },
+   // { id: 12, image: "image/stickplay.png", left: "22%", top: 1580, size: 230, rotate: 3 },
+    { id: 13, image: "image/women.png", left: "93%", top: 1610, size: 130, rotate: -2 },
+    //{ id: 14, image: "image/flower-seller.png", left: "62%", top: 1550, size: 230, rotate: 2 },
+   //{ id: 15, image: "image/musician.png", left: "82%", top: 1500, size: 230, rotate: -1 },
 
     // ===== ROW 4 =====
-    { id: 10, image: "image/culture-artwork-tile.jpg", left: "15%", top: 2180, size: 230, rotate: 2 },
-    { id: 11, image: "image/culture-artwork-tile.jpg", left: "77%", top: 2350, size: 230, rotate: -1 },
-    { id: 12, image: "image/culture-artwork-tile.jpg", left: "48%", top: 2500, size: 230, rotate: 3 },
+    { id: 16, image: "image/stickplay.png", left: "-2%", top: 2150, size: 130, rotate: 3 },
+   // { id: 17, image: "image/dancer.png", left: "22%", top: 2230, size: 230, rotate: -3 },
+    //{ id: 18, image: "image/stickplay.png", left: "42%", top: 2100, size: 230, rotate: 1 },
+   // { id: 19, image: "image/women.png", left: "62%", top: 2200, size: 230, rotate: -1 },
+    { id: 20, image: "image/women with pot.png", left: "92%", top: 2150, size: 160, rotate: 2 },
 
     // ===== ROW 5 =====
-    { id: 13, image: "image/culture-artwork-tile.jpg", left: "7%", top: 2800, size: 230, rotate: -2 },
-    { id: 14, image: "image/culture-artwork-tile.jpg", left: "70%", top: 2960, size: 230, rotate: 2 },
-    { id: 15, image: "image/culture-artwork-tile.jpg", left: "38%", top: 3150, size: 230, rotate: -1 },
+    { id: 21, image: "image/flower-seller.png", left: "10%", top: 2700, size: 230, rotate: -2 },
+    //{ id: 22, image: "image/women with pot.png", left: "22%", top: 2880, size: 230, rotate: 2 },
+    //{ id: 23, image: "image/dancer.png", left: "42%", top: 2750, size: 230, rotate: -3 },
+    { id: 24, image: "image/musician.png", left: "72%", top: 2700, size: 230, rotate: 1 },
+   // { id: 25, image: "image/kashmir.png", left: "82%", top: 2800, size: 230, rotate: -2 },
 
     // ===== ROW 6 =====
-    { id: 16, image: "image/culture-artwork-tile.jpg", left: "17%", top: 3440, size: 230, rotate: 3 },
-    { id: 17, image: "image/culture-artwork-tile.jpg", left: "75%", top: 3600, size: 230, rotate: -3 },
-    { id: 18, image: "image/culture-artwork-tile.jpg", left: "45%", top: 3790, size: 230, rotate: 1 },
+  // IDs 26 and 27
+{ id: 26, image: "image/pillerperson3.png", left: "-6%", top: 3450, size: 230, rotate: 3, zIndex: 9999 },
+{ id: 27, image: "image/pillerperson.png", left: "88%", top: 3450, size: 230, rotate: -1, zIndex: 9999 },
+   // { id: 28, image: "image/musician.png", left: "42%", top: 3400, size: 230, rotate: 2 },
+   // { id: 29, image: "image/flower-seller.png", left: "62%", top: 3500, size: 230, rotate: -2 },
+   // { id: 30, image: "image/women with pot.png", left: "82%", top: 3450, size: 230, rotate: 3 },
 
     // ===== ROW 7 =====
-    { id: 19, image: "image/culture-artwork-tile.jpg", left: "5%", top: 4080, size: 230, rotate: -1 },
-    { id: 20, image: "image/culture-artwork-tile.jpg", left: "66%", top: 4230, size: 230, rotate: 2 },
-    { id: 21, image: "image/culture-artwork-tile.jpg", left: "35%", top: 4450, size: 230, rotate: -2 },
+    { id: 31, image: "image/stickplay.png", left: "-2%", top: 4220, size: 230, rotate: -3 },
+   // { id: 32, image: "image/women.png", left: "52%", top: 4200, size: 230, rotate: 1 },
+    //{ id: 33, image: "image/kashmir.png", left: "42%", top: 4050, size: 230, rotate: -2 },
+   { id: 34, image: "image/women.png", left: "88%", top: 6050, size: 230, rotate: 2 },
+    { id: 35, image: "image/women with pot.png", left: "88%", top: 4300, size: 230, rotate: -1 },
 
     // ===== ROW 8 =====
-    { id: 22, image: "image/culture-artwork-tile.jpg", left: "14%", top: 4730, size: 230, rotate: 2 },
-    { id: 23, image: "image/culture-artwork-tile.jpg", left: "78%", top: 4890, size: 230, rotate: -3 },
-    { id: 24, image: "image/culture-artwork-tile.jpg", left: "48%", top: 5080, size: 230, rotate: 1 },
-
-    // ===== ROW 9 =====
-    { id: 25, image: "image/culture-artwork-tile.jpg", left: "8%", top: 5370, size: 230, rotate: -2 },
-    { id: 26, image: "image/culture-artwork-tile.jpg", left: "69%", top: 5530, size: 230, rotate: 3 },
-    { id: 27, image: "image/culture-artwork-tile.jpg", left: "49%", top: 5740, size: 230, rotate: -1 },
-
-    // ===== ROW 10 =====
-    { id: 28, image: "image/culture-artwork-tile.jpg", left: "16%", top: 6030, size: 230, rotate: 2 },
-    { id: 29, image: "image/culture-artwork-tile.jpg", left: "76%", top: 6190, size: 230, rotate: -2 },
-    { id: 30, image: "image/culture-artwork-tile.jpg", left: "45%", top: 6380, size: 230, rotate: 3 },
-
-    // ===== ROW 11 =====
-    { id: 31, image: "image/culture-artwork-tile.jpg", left: "6%", top: 6670, size: 230, rotate: -3 },
-    { id: 32, image: "image/culture-artwork-tile.jpg", left: "68%", top: 6830, size: 230, rotate: 1 },
-    { id: 33, image: "image/culture-artwork-tile.jpg", left: "36%", top: 7050, size: 230, rotate: -2 },
-
-    // ===== ROW 12 =====
-    { id: 34, image: "image/culture-artwork-tile.jpg", left: "13%", top: 7340, size: 230, rotate: 2 },
-    { id: 35, image: "image/culture-artwork-tile.jpg", left: "77%", top: 7500, size: 230, rotate: -1 },
-    { id: 36, image: "image/culture-artwork-tile.jpg", left: "47%", top: 7690, size: 230, rotate: 3 },
-
-    // ===== ROW 13 =====
-    { id: 37, image: "image/culture-artwork-tile.jpg", left: "7%", top: 7980, size: 230, rotate: -2 },
-    { id: 38, image: "image/culture-artwork-tile.jpg", left: "71%", top: 8140, size: 230, rotate: 2 },
-    { id: 39, image: "image/culture-artwork-tile.jpg", left: "40%", top: 8350, size: 230, rotate: -1 },
-
-    // ===== ROW 14 =====
-    { id: 40, image: "image/culture-artwork-tile.jpg", left: "99%", top: 8640, size: 230, rotate: 2 }
+    { id: 36, image: "image/musician.png", left: "-2.5%", top: 4750, size: 230, rotate: 3 },
+    { id: 37, image: "image/stickplay.png", left: "88%", top: 4830, size: 230, rotate: -2 },
+    { id: 38, image: "image/women with pot.png", left: "84%", top: 7400, size: 330, rotate: 2 },
+    { id: 39, image: "image/kashmir.png", left: "-2%", top: 5800, size: 230, rotate: -1 },
+    { id: 40, image: "image/dancer.png", left: "-2%", top: 6850, size: 230, rotate: 2 }
 
 ];
 
@@ -957,15 +948,17 @@ const artworkTiles = [
 
 function displayArtworkTiles() {
 
-    const oldLayer =
-        document.querySelector(".artwork-scatter");
-
-    if (oldLayer) oldLayer.remove();
+    document.querySelectorAll(
+        ".artwork-scatter, .artwork-front-layer"
+    ).forEach(el => el.remove());
 
     const layer = document.createElement("div");
     layer.className = "artwork-scatter";
-
     document.body.prepend(layer);
+
+    const frontLayer = document.createElement("div");
+    frontLayer.className = "artwork-front-layer";
+    document.body.appendChild(frontLayer);
 
     artworkTiles.forEach(tileData => {
 
@@ -977,7 +970,6 @@ function displayArtworkTiles() {
 
         img.style.width = tileData.size + "px";
         img.style.height = tileData.size + "px";
-
         img.style.left = tileData.left;
         img.style.top = tileData.top + "px";
 
@@ -985,14 +977,15 @@ function displayArtworkTiles() {
             `rotate(${tileData.rotate}deg)`;
 
         img.onerror = () => {
-            console.error(
-                "Image not found:",
-                tileData.image
-            );
+            console.error("Image not found:", tileData.image);
         };
 
-        layer.appendChild(img);
-
+        if (tileData.id === 26 || tileData.id === 27) {
+            img.style.zIndex = "1";
+            frontLayer.appendChild(img);
+        } else {
+            layer.appendChild(img);
+        }
     });
 }
 

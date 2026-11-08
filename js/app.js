@@ -509,14 +509,20 @@ function trailScroll() {
       : 'The gateway is open! Step inside to explore upcoming cultural activities, exact event timings, and Google Maps directions for ' + d + '.';
   }
   function getEventDateDisplay(evt) {
-    if (evt.date && /^\d{4}-\d{2}-\d{2}$/.test(evt.date)) {
-        var date = new Date(evt.date + "T00:00:00");
+    if (evt.date) {
+        if (/^\d{4}-\d{2}-\d{2}$/.test(evt.date)) {
+            var date = new Date(evt.date + "T00:00:00");
 
-        return date.toLocaleDateString("en-IN", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric"
-        });
+            if (!isNaN(date.getTime())) {
+                return date.toLocaleDateString("en-IN", {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric"
+                });
+            }
+        }
+
+        return evt.date;
     }
 
     return evt.schedule || "Date to be announced";
@@ -569,6 +575,9 @@ if (cards) {
   
 function renderGatewayEventModal(evt) {
     if (!evt) return;
+    console.log("EVENT DATA:", evt);
+console.log("EVENT DATE:", evt.date);
+console.log("EVENT SCHEDULE:", evt.schedule);
     closeGatewayEventModal();
 
     var root = document.createElement('div');
@@ -598,9 +607,12 @@ function renderGatewayEventModal(evt) {
 
               '<div class="gateway-event-detail">' +
                 '<span class="gateway-event-detail-label">DESTINATION</span>' +
-                '<span class="gateway-event-detail-value">' +
-                  esc(evt.venue || evt.district || activeDistrict()) +
-                '</span>' +
+                '<a class="gateway-event-detail-value gateway-map-link" ' +
+  'href="' + esc(evt.googleMapsUrl || ('https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(evt.venue || evt.district || activeDistrict()))) + '" ' +
+  'target="_blank" rel="noopener noreferrer">' +
+  '<span>' + esc(evt.venue || evt.district || activeDistrict()) + '</span>' +
+  ' <span aria-hidden="true">↗</span>' +
+'</a>' + 
               '</div>' +
 
               '<div class="gateway-event-detail">' +

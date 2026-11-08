@@ -4825,3 +4825,56 @@ body {
     color: #47271b;
     font-weight: 600;
 }
+.artwork-scatter {
+    position: absolute !important;
+    z-index: 999999 !important;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+}
+
+.artwork-tile {
+    position: absolute !important;
+    z-index: 999999 !important;
+}
+.culture-nav {
+    position: relative !important;
+    top: auto !important;
+}
+.artwork-scatter {
+    position: fixed;
+    inset: 0;
+    z-index: 1 !important;
+    pointer-events: none;
+}
+
+.culture-mark {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.culture-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.gateway-map-link {
+    color: #c49a55;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.gateway-map-link:hover {
+    color: #e8bd72;
+}
