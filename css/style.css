@@ -4807,3 +4807,21 @@ body {
 #gatewayCards .gateway-card-data {
     overscroll-behavior: auto;
 }
+.event-detail-date {
+    margin-bottom: 12px;
+}
+
+.event-detail-date span {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #963d25;
+    margin-bottom: 5px;
+}
+
+.event-detail-date p {
+    font-size: 14px;
+    color: #47271b;
+    font-weight: 600;
+}

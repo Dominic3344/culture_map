@@ -508,6 +508,19 @@ function trailScroll() {
       ? 'The sacred temple gateway to ' + d + ' is closed. Scroll down slowly to swing open the doors.'
       : 'The gateway is open! Step inside to explore upcoming cultural activities, exact event timings, and Google Maps directions for ' + d + '.';
   }
+  function getEventDateDisplay(evt) {
+    if (evt.date && /^\d{4}-\d{2}-\d{2}$/.test(evt.date)) {
+        var date = new Date(evt.date + "T00:00:00");
+
+        return date.toLocaleDateString("en-IN", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+        });
+    }
+
+    return evt.schedule || "Date to be announced";
+}
 
   function updateGateway() {
     var d = activeDistrict();
@@ -553,7 +566,8 @@ if (cards) {
     if (root) root.remove();
   }
 
-  function renderGatewayEventModal(evt) {
+  
+function renderGatewayEventModal(evt) {
     if (!evt) return;
     closeGatewayEventModal();
 
@@ -561,36 +575,69 @@ if (cards) {
     root.id = 'gatewayEventModal';
     root.className = 'gateway-event-modal';
     root.setAttribute('role', 'presentation');
+
     root.innerHTML =
       '<div class="gateway-event-backdrop" data-action="close-gateway-event">' +
         '<section class="gateway-event-dialog" role="dialog" aria-modal="true" aria-label="Cultural destination details">' +
+
           '<header class="gateway-event-header">' +
-            '<div><span class="gateway-event-kicker">LIVING CULTURE · DESTINATION</span>' +
-            '<h2 class="gateway-event-title">' + esc(evt.title) + '</h2></div>' +
+            '<div>' +
+              '<span class="gateway-event-kicker">LIVING CULTURE · DESTINATION</span>' +
+              '<h2 class="gateway-event-title">' + esc(evt.title) + '</h2>' +
+            '</div>' +
             '<button type="button" class="gateway-event-close" data-action="close-gateway-event" aria-label="Close popup">&times;</button>' +
           '</header>' +
+
           '<div class="gateway-event-body">' +
-            '<div class="gateway-event-photo-wrap"><img class="gateway-event-photo" src="' + esc(evt.image) + '" alt="' + esc(evt.title) + '" onerror="' + ERR_IMG + '" /></div>' +
+
+            '<div class="gateway-event-photo-wrap">' +
+              '<img class="gateway-event-photo" src="' + esc(evt.image) + '" alt="' + esc(evt.title) + '" onerror="' + ERR_IMG + '" />' +
+            '</div>' +
+
             '<div class="gateway-event-info">' +
-              '<div class="gateway-event-detail"><span class="gateway-event-detail-label">DESTINATION</span><span class="gateway-event-detail-value">' + esc(evt.venue || evt.district || activeDistrict()) + '</span></div>' +
-              '<div class="gateway-event-detail"><span class="gateway-event-detail-label">TIME</span><span class="gateway-event-detail-value">' + esc(evt.time || 'Please check event schedule') + '</span></div>' +
+
+              '<div class="gateway-event-detail">' +
+                '<span class="gateway-event-detail-label">DESTINATION</span>' +
+                '<span class="gateway-event-detail-value">' +
+                  esc(evt.venue || evt.district || activeDistrict()) +
+                '</span>' +
+              '</div>' +
+
+              '<div class="gateway-event-detail">' +
+                '<span class="gateway-event-detail-label">DATE / SCHEDULE</span>' +
+                '<span class="gateway-event-detail-value">' +
+                  esc(getEventDateDisplay(evt)) +
+                '</span>' +
+              '</div>' +
+
+              '<div class="gateway-event-detail">' +
+                '<span class="gateway-event-detail-label">TIME</span>' +
+                '<span class="gateway-event-detail-value">' +
+                  esc(evt.time || 'Please check event schedule') +
+                '</span>' +
+              '</div>' +
+
               '<button type="button" class="gateway-event-story" data-action="story" data-evt="' + esc(evt.id) + '">' +
                 '<span>Explore Story</span><span aria-hidden="true">&rarr;</span>' +
               '</button>' +
+
             '</div>' +
           '</div>' +
         '</section>' +
       '</div>';
 
     document.body.appendChild(root);
+
     var backdrop = root.querySelector('.gateway-event-backdrop');
     var dialog = root.querySelector('.gateway-event-dialog');
+
     if (backdrop && dialog) {
       backdrop.addEventListener('click', function (event) {
         if (event.target === backdrop) closeGatewayEventModal();
       });
     }
-  }
+}
+
   function updateGatewayCardsPosition(progress) {
     var cards = document.getElementById('gatewayCards');
     var viewport = document.getElementById('gatewayCardsScroll');
