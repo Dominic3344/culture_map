@@ -672,7 +672,7 @@ function trailScroll() {
       var isVerified = item.verificationStatus === 'verified';
       return '' +
         '<article class="group flex flex-col bg-white border border-[#e6dbc8] rounded-2xl overflow-hidden hover:shadow-lg hover:border-[#c8a66f] transition-all duration-300">' +
-          '<div class="relative h-48 w-full overflow-hidden bg-[#25140f]/10">' +
+         '<div class="relative h-64 w-full overflow-hidden bg-[#25140f]/10">' +
             '<img src="' + esc(item.imageUrl) + '" alt="' + esc(item.title) + '" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" onerror="' + ERR_IMG + '" />' +
             '<div class="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent pointer-events-none"></div>' +
             '<span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-wide bg-[#25140f]/70 text-[#fcedd0] backdrop-blur-sm border border-white/20">' + esc(item.artForm) + '</span>' +

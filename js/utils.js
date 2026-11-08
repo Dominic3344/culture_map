@@ -1,26 +1,56 @@
 /* Listing storage, filtering, submission & moderation helpers */
 (function () {
 const STORAGE_KEY = "living_culture_map_listings_v1";
+
 function getInitialListings() {
-  if (typeof window === "undefined") {
-    return window.INITIAL_CULTURAL_LISTINGS;
-  }
-  try {
-    const raw = localStorage.getItem(STORAGE_KEY);
-    if (!raw) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(window.INITIAL_CULTURAL_LISTINGS));
-      return window.INITIAL_CULTURAL_LISTINGS;
+    if (typeof window === "undefined") {
+        return window.INITIAL_CULTURAL_LISTINGS;
     }
-    const parsed = JSON.parse(raw);
-    if (Array.isArray(parsed) && parsed.length > 0) {
-      return parsed;
+
+    try {
+        const seedListings = window.INITIAL_CULTURAL_LISTINGS || [];
+        const raw = localStorage.getItem(STORAGE_KEY);
+
+        if (!raw) {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(seedListings));
+            return seedListings;
+        }
+
+        const parsed = JSON.parse(raw);
+
+        if (Array.isArray(parsed) && parsed.length > 0) {
+            // Update existing seeded listings with the latest seed data.
+            const updatedListings = parsed.map(function (savedItem) {
+                const seedItem = seedListings.find(function (item) {
+                    return item.id === savedItem.id;
+                });
+
+                if (seedItem) {
+                    return Object.assign({}, savedItem, {
+                        imageUrl: seedItem.imageUrl
+                    });
+                }
+
+                // Preserve user-submitted listings.
+                return savedItem;
+            });
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(updatedListings)
+            );
+
+            return updatedListings;
+        }
+
+        return seedListings;
+
+    } catch (err) {
+        console.warn("Failed to read from localStorage:", err);
+        return window.INITIAL_CULTURAL_LISTINGS;
     }
-    return window.INITIAL_CULTURAL_LISTINGS;
-  } catch (err) {
-    console.warn("Failed to read from localStorage:", err);
-    return window.INITIAL_CULTURAL_LISTINGS;
-  }
 }
+
 function saveListingsToStorage(listings) {
   if (typeof window === "undefined") return;
   try {
