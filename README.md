@@ -144,7 +144,13 @@ Do not commit API keys, passwords, webhook URLs, or other secrets to GitHub.
 6. Visit the Cultural Directory to search and filter cultural listings.
 7. Select a location to open it in Google Maps.
 8. Use the contribution interface to submit new cultural information.
-9. Use the Moderator Hub to review submitted information, where moderation functionality is enabled.
+9. Open the Moderator Hub from the platform navigation menu.
+10. If you are a new moderator, select Create New Account / Sign Up.
+11. Register using the existing special moderator email ID and create your own password.
+12. After successful registration, log in to the Moderator Hub using your registered email ID and password.
+13. Review, approve, reject, or manage submitted cultural information where moderation functionality is enabled.
+14. Log out after completing moderation tasks.
+Note: Moderator registration requires the designated special email ID. New moderators must create their own password during registration.
 
 ## 9. Demonstration Screenshots
 
