@@ -222,6 +222,7 @@ This project was developed as part of **ART//CODE 2026**.
 
 All third-party images, icons, fonts, maps, and other resources should be credited to their respective creators and sources.
 
-The project license is MIT License
+
+This project is licensed under the MIT License.
 
 Refer to the `LICENSE` file in this repository for licensing details.
