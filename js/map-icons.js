@@ -708,9 +708,59 @@ if (andhraPradesh) {
 
     map.appendChild(foreignObject);
 }
+
+// HIMACHAL PRADESH ICON
+
+const himachalPradesh = map.querySelector("#tryjs25");
+
+if (himachalPradesh) {
+
+    const bbox = himachalPradesh.getBBox();
+
+    const icon = document.createElementNS(
+        "http://www.w3.org/2000/svg",
+        "foreignObject"
+    );
+
+    const iconSize = 35;
+
+    icon.setAttribute(
+        "id",
+        "himachal-pradesh-icon-container"
+    );
+
+    icon.setAttribute(
+        "data-state-id",
+        "tryjs10"
+    );
+
+    icon.setAttribute(
+        "x",
+        bbox.x + (bbox.width - iconSize) / 2
+    );
+
+    icon.setAttribute(
+        "y",
+        bbox.y + (bbox.height - iconSize) / 2
+    );
+
+    icon.setAttribute("width", iconSize);
+    icon.setAttribute("height", iconSize);
+
+    icon.innerHTML = `
+        <div xmlns="http://www.w3.org/1999/xhtml"
+             class="himachal-pradesh-icon-wrapper">
+            <img src="image/mountain_icon.svg"
+                 class="himachal-pradesh-icon"
+                 alt="Himachal Pradesh mountains">
+        </div>
+    `;
+
+    map.appendChild(icon);
+}
 // JAMMU & KASHMIR MOUNTAIN ICON
 
-const jammuKashmir = map.querySelector("#tryjs1");
+const jammuKashmir = map.querySelector("#tryjs22");
 
 if (jammuKashmir) {
 
