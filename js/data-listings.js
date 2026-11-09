@@ -122,7 +122,7 @@ var M3 = (() => {
       verificationStatus: "verified",
       verifiedBy: "Sangeet Natak Akademi & UNESCO Intangible Heritage Register",
       verificationDate: "2025-01-20",
-      visitingEtiquette: "Remove shoes before entering the temple natyagriha. Mobile phones must be switched off completely during the slow, meditative recitation.",
+      visitingEtiquette: "Remove shoes before entering the temple natyagriha. Mobile phones must be switched off completely during the show, meditative recitation.",
       tags: ["Koodiyattam", "Sanskrit Theatre", "UNESCO", "Mizhavu", "Irinjalakuda"],
       createdAt: "2025-01-13T14:15:00Z"
     },
