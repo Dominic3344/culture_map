@@ -252,7 +252,7 @@ var M2 = (() => {
         time: "4:30 PM \u2013 9:00 PM IST",
         artForm: "Classical Dance & Theatre",
         description: "Non-stop classical Carnatic music recital where veteran maestris and young prodigies perform without competitive pressure in honor of Chembai Vaidyanatha Bhagavatar.",
-        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
+        image: "image/Chembai Carnatic Sangeetholsavam Marathon Sabha.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Chembai+Parameswara+Bhagavatar+Memorial,+Kottayi,+Palakkad,+Kerala",
         relatedListingId: "ker-16",
         statusBadge: "Carnatic Sabha Gathering"
@@ -267,7 +267,7 @@ var M2 = (() => {
         time: "3:00 PM \u2013 7:30 PM IST",
         artForm: "Ritual Performance",
         description: "Vibrant ritual dance carrying sculpted peacock and flower kavadis balanced on shoulders, synchronized with Thavil, Chenda, and Nadaswaram crescendos.",
-        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
+        image: "image/Kavadiyattam Rhythm & Percussion Procession.avif",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Chittur,+Palakkad,+Kerala",
         statusBadge: "Folk Rhythm Gathering"
       }
@@ -283,7 +283,7 @@ var M2 = (() => {
         time: "9:30 AM \u2013 1:30 PM IST",
         artForm: "Martial Arts & Kalari",
         description: "Traditional bamboo bow and poisoned-tip replica archery demonstrations with tribal herbal medicine identification guided by Kurichiya clan elders.",
-        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
+        image: "image/Wayanad Kurichiya Archery & Indigenous Herb Lore.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Thirunelly+Temple,+Wayanad,+Kerala",
         relatedListingId: "ker-17",
         statusBadge: "Indigenous Clan Event"
@@ -298,7 +298,7 @@ var M2 = (() => {
         time: "8:30 AM \u2013 3:30 PM IST",
         artForm: "Heritage Site",
         description: "Explore Stone Age petroglyphs and human-animal pictorial glyphs carved onto prehistoric split granite rock faces overlooking the Western Ghats.",
-        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
+        image: "image/Edakkal Neolithic Rock Carvings & Heritage Trail.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Edakkal+Caves,+Nenmeni,+Wayanad,+Kerala",
         statusBadge: "Neolithic Rock Art Walk"
       }
@@ -314,7 +314,7 @@ var M2 = (() => {
         time: "9:30 PM \u2013 4:00 AM (Overnight) IST",
         artForm: "Ritual Performance",
         description: "Towering areca-palm leaf masks (Kolams) painted with natural vermilion and charcoal, worn in trance-inducing ritual theatre to the thundering Thappu drums.",
-        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
+        image: "image/Kadammanitta Padayani Bhairavi Kolam Nocturnal Trance Theatre.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Kadammanitta+Devi+Temple,+Pathanamthitta,+Kerala",
         relatedListingId: "ker-14",
         statusBadge: "Kolam Mask Ritual"
@@ -329,7 +329,7 @@ var M2 = (() => {
         time: "11:30 AM \u2013 2:30 PM IST",
         artForm: "Temple Festival",
         description: "Historic mass feast featuring 64 distinct vegetarian delicacies served on banana leaves, requested by oarsmen through rhythmic poetic songs.",
-        image: "image/Kalamandalam Classical Kathakali Rehearsal & Bhava Recital.jpg",
+        image: "image/Aranmula Valla Sadya & Sacred Backwater Feast.jpg",
         googleMapsUrl: "https://www.google.com/maps/dir/?api=1&destination=Aranmula+Parthasarathy+Temple,+Pathanamthitta,+Kerala",
         relatedListingId: "ker-05",
         statusBadge: "64-Course Feast Experience"

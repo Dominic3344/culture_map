@@ -836,6 +836,7 @@ body {
     height: 220px !important;
     flex: 0 0 220px !important;
     overflow: hidden !important;
+    
     background: #25140f !important;
 }
 
@@ -876,4 +877,16 @@ body {
 /* Remove old hover movement */
 .gateway-district-scroll .gateway-card:hover .gateway-card-data {
     transform: none !important;
+}
+
+/* Remove additional overlays from district gateway cards */
+.gateway-district-scroll .gateway-card-image::before,
+.gateway-district-scroll .gateway-card-image::after {
+    content: none !important;
+    display: none !important;
+}
+
+.gateway-district-scroll .gateway-card-image img:not(.gateway-card-img),
+.gateway-district-scroll .gateway-card-image > :not(.gateway-card-img):not(.gateway-image-hint) {
+    display: none !important;
 }
